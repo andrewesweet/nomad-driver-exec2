@@ -15,6 +15,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/hashicorp/nomad-driver-exec2/pkg/capabilities"
 	"github.com/hashicorp/nomad/ci"
 	"github.com/hashicorp/nomad/client/lib/cgroupslib"
 	ctests "github.com/hashicorp/nomad/client/testutil"
@@ -485,6 +486,77 @@ func TestFunctional_cases(t *testing.T) {
 			checkLogs(t, task, tc.stdoutRe, tc.stderrRe)
 		})
 	}
+}
+
+func TestPlugin_Capabilities_Resolution(t *testing.T) {
+	tests := []struct {
+		name     string
+		capAdd   []string
+		capDrop  []string
+		expected []string
+	}{
+		{
+			name:     "default capabilities",
+			capAdd:   nil,
+			capDrop:  nil,
+			expected: []string{"CAP_CHOWN", "CAP_DAC_OVERRIDE", "CAP_FOWNER", "CAP_FSETID", "CAP_KILL", "CAP_NET_BIND_SERVICE", "CAP_SETFCAP", "CAP_SETGID", "CAP_SETPCAP", "CAP_SETUID", "CAP_SYS_CHROOT"},
+		},
+		{
+			name:     "add capability",
+			capAdd:   []string{"CAP_SYS_ADMIN"},
+			capDrop:  nil,
+			expected: []string{"CAP_CHOWN", "CAP_DAC_OVERRIDE", "CAP_FOWNER", "CAP_FSETID", "CAP_KILL", "CAP_NET_BIND_SERVICE", "CAP_SETFCAP", "CAP_SETGID", "CAP_SETPCAP", "CAP_SETUID", "CAP_SYS_CHROOT", "CAP_SYS_ADMIN"},
+		},
+		{
+			name:     "drop capability",
+			capAdd:   nil,
+			capDrop:  []string{"CAP_CHOWN"},
+			expected: []string{"CAP_DAC_OVERRIDE", "CAP_FOWNER", "CAP_FSETID", "CAP_KILL", "CAP_NET_BIND_SERVICE", "CAP_SETFCAP", "CAP_SETGID", "CAP_SETPCAP", "CAP_SETUID", "CAP_SYS_CHROOT"},
+		},
+		{
+			name:     "drop takes precedence",
+			capAdd:   []string{"CAP_CHOWN"},
+			capDrop:  []string{"CAP_CHOWN"},
+			expected: []string{"CAP_DAC_OVERRIDE", "CAP_FOWNER", "CAP_FSETID", "CAP_KILL", "CAP_NET_BIND_SERVICE", "CAP_SETFCAP", "CAP_SETGID", "CAP_SETPCAP", "CAP_SETUID", "CAP_SYS_CHROOT"},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result := capabilities.ResolveCapabilities(tt.capAdd, tt.capDrop)
+			must.SliceContainsAll(t, result, tt.expected)
+			must.Len(t, len(tt.expected), result)
+		})
+	}
+}
+
+func TestPlugin_TaskConfig_Capabilities(t *testing.T) {
+	harness := newTestHarness(t, &Config{
+		UnveilDefaults: false,
+	})
+	defer harness.Kill()
+
+	task := &drivers.TaskConfig{
+		ID:        uuid.Generate(),
+		Name:      "test",
+		AllocID:   uuid.Generate(),
+		Resources: basicResources(uuid.Generate(), "test"),
+	}
+
+	taskConfig := map[string]any{
+		"command":  "echo",
+		"args":     []string{"hello"},
+		"cap_add":  []string{"CAP_SYS_ADMIN"},
+		"cap_drop": []string{"CAP_CHOWN"},
+	}
+
+	must.NoError(t, task.EncodeConcreteDriverConfig(&taskConfig))
+
+	var decodedConfig TaskConfig
+	must.NoError(t, task.DecodeDriverConfig(&decodedConfig))
+
+	must.Eq(t, []string{"CAP_SYS_ADMIN"}, decodedConfig.CapAdd)
+	must.Eq(t, []string{"CAP_CHOWN"}, decodedConfig.CapDrop)
 }
 
 func checkLogs(t *testing.T, task *drivers.TaskConfig, outRe, errRe *regexp.Regexp) {

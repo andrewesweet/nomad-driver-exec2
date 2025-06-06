@@ -18,8 +18,10 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-set/v2"
+	"github.com/hashicorp/nomad-driver-exec2/pkg/capabilities"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/resources"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/resources/process"
+	"github.com/hashicorp/nomad-driver-exec2/pkg/util"
 	"github.com/hashicorp/nomad/helper/users/dynamic"
 	"golang.org/x/sys/unix"
 )
@@ -31,6 +33,8 @@ type Options struct {
 	UnveilPaths    []string
 	UnveilDefaults bool
 	OOMScoreAdj    int
+	CapAdd         []string
+	CapDrop        []string
 }
 
 // Environment represents runtime configuration.
@@ -304,6 +308,19 @@ func (e *exe) parameters(uid, gid int) []string {
 			"nsenter",
 			"--no-fork",
 			fmt.Sprintf("--net=%s", net),
+			"--",
+		)
+	}
+
+	if util.IsLinuxOS() && (len(e.opts.CapAdd) > 0 || len(e.opts.CapDrop) > 0) {
+		caps := capabilities.ResolveCapabilities(e.opts.CapAdd, e.opts.CapDrop)
+		capString := capabilities.FormatCapabilitiesForSetpriv(caps)
+		
+		result = append(result,
+			"setpriv",
+			fmt.Sprintf("--inh-caps=%s", capString),
+			"--ambient-caps=-all",
+			fmt.Sprintf("--bounding-set=%s", capString),
 			"--",
 		)
 	}

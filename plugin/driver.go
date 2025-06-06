@@ -105,7 +105,7 @@ func (*Plugin) TaskConfigSchema() (*hclspec.Spec, error) {
 }
 
 func (*Plugin) Capabilities() (*drivers.Capabilities, error) {
-	return capabilities, nil
+	return driverCapabilities, nil
 }
 
 func (p *Plugin) Fingerprint(ctx context.Context) (<-chan *drivers.Fingerprint, error) {
@@ -550,5 +550,7 @@ func (p *Plugin) setOptions(driverTaskConfig *drivers.TaskConfig) (*shim.Options
 		UnveilPaths:    unveil,
 		UnveilDefaults: p.config.UnveilDefaults,
 		OOMScoreAdj:    taskConfig.OOMScoreAdj,
+		CapAdd:         taskConfig.CapAdd,
+		CapDrop:        taskConfig.CapDrop,
 	}, nil
 }

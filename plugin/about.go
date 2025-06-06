@@ -60,9 +60,11 @@ var taskConfigSpec = hclspec.NewObject(map[string]*hclspec.Spec{
 	"args":          hclspec.NewAttr("args", "list(string)", false),
 	"unveil":        hclspec.NewAttr("unveil", "list(string)", false),
 	"oom_score_adj": hclspec.NewAttr("oom_score_adj", "number", false),
+	"cap_add":       hclspec.NewAttr("cap_add", "list(string)", false),
+	"cap_drop":      hclspec.NewAttr("cap_drop", "list(string)", false),
 })
 
-var capabilities = &drivers.Capabilities{
+var driverCapabilities = &drivers.Capabilities{
 	DynamicWorkloadUsers: true,
 	SendSignals:          true,
 	Exec:                 false,
@@ -91,4 +93,6 @@ type TaskConfig struct {
 	Args        []string `codec:"args"`
 	Unveil      []string `codec:"unveil"`
 	OOMScoreAdj int      `codec:"oom_score_adj"`
+	CapAdd      []string `codec:"cap_add"`
+	CapDrop     []string `codec:"cap_drop"`
 }
