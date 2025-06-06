@@ -1,5 +1,6 @@
 
-package shim
+
+package e2e
 
 import (
 	"fmt"
