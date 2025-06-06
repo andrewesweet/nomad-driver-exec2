@@ -25,13 +25,13 @@ func TestCapabilities(t *testing.T) {
 			capAdd:       nil,
 			capDrop:      nil,
 			expectedCaps: []string{"cap_chown", "cap_dac_override", "cap_fowner", "cap_fsetid", "cap_kill", "cap_net_bind_service", "cap_setfcap", "cap_setgid", "cap_setpcap", "cap_setuid", "cap_sys_chroot"},
-			notExpected:  []string{"cap_sys_admin"},
+			notExpected:  []string{"cap_sys_time"},
 		},
 		{
 			name:         "add capability",
-			capAdd:       []string{"CAP_SYS_ADMIN"},
+			capAdd:       []string{"CAP_SYS_TIME"},
 			capDrop:      nil,
-			expectedCaps: []string{"cap_chown", "cap_dac_override", "cap_fowner", "cap_fsetid", "cap_kill", "cap_net_bind_service", "cap_setfcap", "cap_setgid", "cap_setpcap", "cap_setuid", "cap_sys_chroot", "cap_sys_admin"},
+			expectedCaps: []string{"cap_chown", "cap_dac_override", "cap_fowner", "cap_fsetid", "cap_kill", "cap_net_bind_service", "cap_setfcap", "cap_setgid", "cap_setpcap", "cap_setuid", "cap_sys_chroot", "cap_sys_time"},
 			notExpected:  nil,
 		},
 		{

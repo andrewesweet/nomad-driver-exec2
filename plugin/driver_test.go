@@ -503,9 +503,9 @@ func TestPlugin_Capabilities_Resolution(t *testing.T) {
 		},
 		{
 			name:     "add capability",
-			capAdd:   []string{"CAP_SYS_ADMIN"},
+			capAdd:   []string{"CAP_SYS_TIME"},
 			capDrop:  nil,
-			expected: []string{"CAP_CHOWN", "CAP_DAC_OVERRIDE", "CAP_FOWNER", "CAP_FSETID", "CAP_KILL", "CAP_NET_BIND_SERVICE", "CAP_SETFCAP", "CAP_SETGID", "CAP_SETPCAP", "CAP_SETUID", "CAP_SYS_CHROOT", "CAP_SYS_ADMIN"},
+			expected: []string{"CAP_CHOWN", "CAP_DAC_OVERRIDE", "CAP_FOWNER", "CAP_FSETID", "CAP_KILL", "CAP_NET_BIND_SERVICE", "CAP_SETFCAP", "CAP_SETGID", "CAP_SETPCAP", "CAP_SETUID", "CAP_SYS_CHROOT", "CAP_SYS_TIME"},
 		},
 		{
 			name:     "drop capability",
@@ -546,7 +546,7 @@ func TestPlugin_TaskConfig_Capabilities(t *testing.T) {
 	taskConfig := map[string]any{
 		"command":  "echo",
 		"args":     []string{"hello"},
-		"cap_add":  []string{"CAP_SYS_ADMIN"},
+		"cap_add":  []string{"CAP_SYS_TIME"},
 		"cap_drop": []string{"CAP_CHOWN"},
 	}
 
@@ -555,7 +555,7 @@ func TestPlugin_TaskConfig_Capabilities(t *testing.T) {
 	var decodedConfig TaskConfig
 	must.NoError(t, task.DecodeDriverConfig(&decodedConfig))
 
-	must.Eq(t, []string{"CAP_SYS_ADMIN"}, decodedConfig.CapAdd)
+	must.Eq(t, []string{"CAP_SYS_TIME"}, decodedConfig.CapAdd)
 	must.Eq(t, []string{"CAP_CHOWN"}, decodedConfig.CapDrop)
 }
 

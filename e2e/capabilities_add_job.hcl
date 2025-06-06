@@ -9,7 +9,7 @@ job "test-capabilities-add" {
       config {
         command  = "setpriv"
         args     = ["--dump"]
-        cap_add  = ["CAP_SYS_ADMIN"]
+        cap_add  = ["CAP_SYS_TIME"]
       }
     }
   }
