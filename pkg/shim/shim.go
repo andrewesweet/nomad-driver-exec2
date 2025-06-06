@@ -320,7 +320,6 @@ func (e *exe) parameters(uid, gid int) []string {
 			"setpriv",
 			fmt.Sprintf("--inh-caps=%s", capString),
 			"--ambient-caps=-all",
-			fmt.Sprintf("--bounding-set=%s", capString),
 			"--",
 		)
 	}
