@@ -88,12 +88,12 @@ func TestFormatCapabilitiesForSetpriv(t *testing.T) {
 		{
 			name:     "single capability",
 			caps:     []string{"CAP_CHOWN"},
-			expected: "+cap_chown",
+			expected: "+chown",
 		},
 		{
 			name:     "multiple capabilities",
 			caps:     []string{"CAP_CHOWN", "CAP_FOWNER"},
-			expected: "+cap_chown,+cap_fowner",
+			expected: "+chown,+fowner",
 		},
 	}
 

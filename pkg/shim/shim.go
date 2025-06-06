@@ -21,7 +21,6 @@ import (
 	"github.com/hashicorp/nomad-driver-exec2/pkg/capabilities"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/resources"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/resources/process"
-	"github.com/hashicorp/nomad-driver-exec2/pkg/util"
 	"github.com/hashicorp/nomad/helper/users/dynamic"
 	"golang.org/x/sys/unix"
 )
@@ -312,17 +311,15 @@ func (e *exe) parameters(uid, gid int) []string {
 		)
 	}
 
-	if util.IsLinuxOS() && (len(e.opts.CapAdd) > 0 || len(e.opts.CapDrop) > 0) {
-		caps := capabilities.ResolveCapabilities(e.opts.CapAdd, e.opts.CapDrop)
-		capString := capabilities.FormatCapabilitiesForSetpriv(caps)
-		
-		result = append(result,
-			"setpriv",
-			fmt.Sprintf("--inh-caps=%s", capString),
-			"--ambient-caps=-all",
-			"--",
-		)
-	}
+	caps := capabilities.ResolveCapabilities(e.opts.CapAdd, e.opts.CapDrop)
+	capString := capabilities.FormatCapabilitiesForSetpriv(caps)
+	result = append(result,
+		"setpriv",
+		"--inh-caps="+capString,
+		"--ambient-caps=-all",
+		"--bounding-set="+capString,
+		"--",
+	)
 
 	// setup unshare for ipc, pid namespaces
 	result = append(result,
@@ -350,6 +347,7 @@ func (e *exe) parameters(uid, gid int) []string {
 	if len(e.opts.Arguments) > 0 {
 		result = append(result, e.opts.Arguments...)
 	}
+
 
 	// craft complete result
 	return result
