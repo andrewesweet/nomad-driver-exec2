@@ -9,12 +9,15 @@ import (
 )
 
 func TestCapabilities_Default(t *testing.T) {
-	defer purge()
-	setup()
-	run("nomad job run ./jobs/capabilities-default.hcl")
-	wait(`Status\s+running`)
+	ctx := setup(t)
+	defer purge(t, ctx, "capabilities-default")()
 	
-	output := logs("capabilities-default")
+	_ = run(t, ctx, "nomad", "job", "run", "./jobs/capabilities-default.hcl")
+	
+	statusOutput := run(t, ctx, "nomad", "job", "status", "capabilities-default")
+	alloc := allocFromJobStatus(t, statusOutput)
+	
+	output := logs(t, ctx, alloc)
 	require.Contains(t, output, "cap_chown")
 	require.Contains(t, output, "cap_dac_override")
 	require.Contains(t, output, "cap_fowner")
@@ -22,23 +25,29 @@ func TestCapabilities_Default(t *testing.T) {
 }
 
 func TestCapabilities_Add(t *testing.T) {
-	defer purge()
-	setup()
-	run("nomad job run ./jobs/capabilities-add.hcl")
-	wait(`Status\s+running`)
+	ctx := setup(t)
+	defer purge(t, ctx, "capabilities-add")()
 	
-	output := logs("capabilities-add")
+	_ = run(t, ctx, "nomad", "job", "run", "./jobs/capabilities-add.hcl")
+	
+	statusOutput := run(t, ctx, "nomad", "job", "status", "capabilities-add")
+	alloc := allocFromJobStatus(t, statusOutput)
+	
+	output := logs(t, ctx, alloc)
 	require.Contains(t, output, "cap_chown")
 	require.Contains(t, output, "cap_sys_time")
 }
 
 func TestCapabilities_Drop(t *testing.T) {
-	defer purge()
-	setup()
-	run("nomad job run ./jobs/capabilities-drop.hcl")
-	wait(`Status\s+running`)
+	ctx := setup(t)
+	defer purge(t, ctx, "capabilities-drop")()
 	
-	output := logs("capabilities-drop")
+	_ = run(t, ctx, "nomad", "job", "run", "./jobs/capabilities-drop.hcl")
+	
+	statusOutput := run(t, ctx, "nomad", "job", "status", "capabilities-drop")
+	alloc := allocFromJobStatus(t, statusOutput)
+	
+	output := logs(t, ctx, alloc)
 	require.NotContains(t, output, "cap_chown")
 	require.Contains(t, output, "cap_dac_override")
 }
