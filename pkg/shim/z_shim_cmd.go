@@ -83,7 +83,7 @@ func init() {
 		// set of given filepaths
 		if err := lockdown(defaults, paths); err != nil {
 			debug("unable to lockdown: %v", err)
-			debug("continuing without landlock isolation")
+			return subproc.ExitFailure
 		}
 
 		// locate the absolute path for the task command, as this must be
