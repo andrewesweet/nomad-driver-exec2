@@ -741,6 +741,23 @@ func Test_doFingerprint_missing_unshare(t *testing.T) {
 	must.Eq(t, "unshare executable not found", fp.HealthDescription)
 }
 
+func Test_doFingerprint_missing_setpriv(t *testing.T) {
+	ctests.RequireRoot(t)
+
+	setprivLookupFailure := func(name string) (string, error) {
+		if name == "setpriv" {
+			return "", os.ErrNotExist
+		}
+		return filepath.Join("/bin", name), nil
+	}
+
+	p := new(Plugin)
+	fp := p.doFingerprint(setprivLookupFailure)
+
+	must.Eq(t, drivers.HealthStateUndetected, fp.Health)
+	must.Eq(t, "setpriv executable not found", fp.HealthDescription)
+}
+
 func Test_tools(t *testing.T) {
 	t.Run("unshare", func(t *testing.T) {
 		path, err := exec.LookPath("unshare")
@@ -752,5 +769,11 @@ func Test_tools(t *testing.T) {
 		path, err := exec.LookPath("nsenter")
 		must.NoError(t, err)
 		t.Log("path to nsenter is: " + path)
+	})
+
+	t.Run("setpriv", func(t *testing.T) {
+		path, err := exec.LookPath("setpriv")
+		must.NoError(t, err)
+		t.Log("path to setpriv is: " + path)
 	})
 }

@@ -168,6 +168,17 @@ func (p *Plugin) doFingerprint(find lookupFunc) *drivers.Fingerprint {
 		return failure(drivers.HealthStateUndetected, "unshare executable does not exist")
 	}
 
+	// inspect setpriv binary
+	sPath, sErr := find("setpriv")
+	switch {
+	case os.IsNotExist(sErr):
+		return failure(drivers.HealthStateUndetected, "setpriv executable not found")
+	case sErr != nil:
+		return failure(drivers.HealthStateUnhealthy, "failed to find setpriv executable")
+	case sPath == "":
+		return failure(drivers.HealthStateUndetected, "setpriv executable does not exist")
+	}
+
 	// create our fingerprint
 	return &drivers.Fingerprint{
 		Health:            drivers.HealthStateHealthy,
