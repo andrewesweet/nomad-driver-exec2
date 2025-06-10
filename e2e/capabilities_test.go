@@ -1,8 +1,11 @@
+// Copyright (c) HashiCorp, Inc.
+// SPDX-License-Identifier: MPL-2.0
+
+
+
 //go:build e2e
 
-
-
-package shim
+package e2e
 
 import (
 	"testing"
