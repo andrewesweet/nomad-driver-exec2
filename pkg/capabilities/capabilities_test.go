@@ -39,8 +39,8 @@ func TestResolveCapabilities(t *testing.T) {
 			expected: []string{"CAP_DAC_OVERRIDE", "CAP_FOWNER", "CAP_FSETID", "CAP_KILL", "CAP_NET_BIND_SERVICE", "CAP_SETFCAP", "CAP_SETGID", "CAP_SETPCAP", "CAP_SETUID", "CAP_SYS_CHROOT"},
 		},
 		{
-			name:     "normalize capability names",
-			capAdd:   []string{"sys_admin", "CAP_NET_ADMIN"},
+			name:     "add valid capabilities",
+			capAdd:   []string{"CAP_SYS_ADMIN", "CAP_NET_ADMIN"},
 			capDrop:  nil,
 			expected: append(defaultCapabilities, "CAP_SYS_ADMIN", "CAP_NET_ADMIN"),
 		},
@@ -59,17 +59,90 @@ func TestNormalizeCapability(t *testing.T) {
 		input    string
 		expected string
 	}{
-		{"chown", "CAP_CHOWN"},
 		{"CAP_CHOWN", "CAP_CHOWN"},
-		{"sys_admin", "CAP_SYS_ADMIN"},
+		{"cap_chown", "CAP_CHOWN"},
 		{"CAP_SYS_ADMIN", "CAP_SYS_ADMIN"},
-		{"net_bind_service", "CAP_NET_BIND_SERVICE"},
+		{"cap_sys_admin", "CAP_SYS_ADMIN"},
+		{"CAP_NET_BIND_SERVICE", "CAP_NET_BIND_SERVICE"},
+		{"chown", ""},
+		{"sys_admin", ""},
+		{"net_bind_service", ""},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.input, func(t *testing.T) {
 			result := normalizeCapability(tt.input)
 			require.Equal(t, tt.expected, result)
+		})
+	}
+}
+
+func TestValidateCapabilities(t *testing.T) {
+	tests := []struct {
+		name        string
+		caps        []string
+		expected    []string
+		expectError bool
+		errorContains string
+	}{
+		{
+			name:        "empty capabilities",
+			caps:        []string{},
+			expected:    []string{},
+			expectError: false,
+		},
+		{
+			name:        "valid capabilities uppercase",
+			caps:        []string{"CAP_SYS_TIME", "CAP_NET_ADMIN"},
+			expected:    []string{"CAP_SYS_TIME", "CAP_NET_ADMIN"},
+			expectError: false,
+		},
+		{
+			name:        "valid capabilities lowercase",
+			caps:        []string{"cap_sys_time", "cap_net_admin"},
+			expected:    []string{"CAP_SYS_TIME", "CAP_NET_ADMIN"},
+			expectError: false,
+		},
+		{
+			name:        "mixed case valid capabilities",
+			caps:        []string{"Cap_Sys_Time", "CAP_net_admin"},
+			expected:    []string{"CAP_SYS_TIME", "CAP_NET_ADMIN"},
+			expectError: false,
+		},
+		{
+			name:        "capabilities without CAP_ prefix",
+			caps:        []string{"sys_time", "net_admin"},
+			expected:    nil,
+			expectError: true,
+			errorContains: "sys_time",
+		},
+		{
+			name:        "unknown capabilities",
+			caps:        []string{"CAP_UNKNOWN", "CAP_INVALID"},
+			expected:    nil,
+			expectError: true,
+			errorContains: "CAP_UNKNOWN",
+		},
+		{
+			name:        "mixed valid and invalid capabilities",
+			caps:        []string{"CAP_SYS_TIME", "invalid_cap", "CAP_UNKNOWN"},
+			expected:    nil,
+			expectError: true,
+			errorContains: "invalid_cap",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			result, err := ValidateCapabilities(tt.caps)
+			if tt.expectError {
+				require.Error(t, err)
+				require.Contains(t, err.Error(), tt.errorContains)
+				require.Nil(t, result)
+			} else {
+				require.NoError(t, err)
+				require.ElementsMatch(t, tt.expected, result)
+			}
 		})
 	}
 }

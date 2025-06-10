@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-hclog"
+	"github.com/hashicorp/nomad-driver-exec2/pkg/capabilities"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/resources"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/shim"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/task"
@@ -544,13 +545,23 @@ func (p *Plugin) setOptions(driverTaskConfig *drivers.TaskConfig) (*shim.Options
 		unveil = append(unveil, taskConfig.Unveil...)
 	}
 
+	normalizedCapAdd, err := capabilities.ValidateCapabilities(taskConfig.CapAdd)
+	if err != nil {
+		return nil, fmt.Errorf("Unknown capabilities in cap_add: %w", err)
+	}
+	
+	normalizedCapDrop, err := capabilities.ValidateCapabilities(taskConfig.CapDrop)
+	if err != nil {
+		return nil, fmt.Errorf("Unknown capabilities in cap_drop: %w", err)
+	}
+
 	return &shim.Options{
 		Command:        taskConfig.Command,
 		Arguments:      taskConfig.Args,
 		UnveilPaths:    unveil,
 		UnveilDefaults: p.config.UnveilDefaults,
 		OOMScoreAdj:    taskConfig.OOMScoreAdj,
-		CapAdd:         taskConfig.CapAdd,
-		CapDrop:        taskConfig.CapDrop,
+		CapAdd:         normalizedCapAdd,
+		CapDrop:        normalizedCapDrop,
 	}, nil
 }

@@ -559,6 +559,97 @@ func TestPlugin_TaskConfig_Capabilities(t *testing.T) {
 	must.Eq(t, []string{"CAP_CHOWN"}, decodedConfig.CapDrop)
 }
 
+func TestPlugin_SetOptions_CapabilityValidation(t *testing.T) {
+	p := &Plugin{
+		config: &Config{
+			UnveilDefaults: false,
+			UnveilByTask:   false,
+		},
+	}
+
+	tests := []struct {
+		name        string
+		capAdd      []string
+		capDrop     []string
+		expectError bool
+		errorContains string
+	}{
+		{
+			name:        "valid capabilities uppercase",
+			capAdd:      []string{"CAP_SYS_TIME"},
+			capDrop:     []string{"CAP_CHOWN"},
+			expectError: false,
+		},
+		{
+			name:        "valid capabilities lowercase normalized",
+			capAdd:      []string{"cap_sys_time"},
+			capDrop:     []string{"cap_chown"},
+			expectError: false,
+		},
+		{
+			name:        "invalid cap_add without prefix",
+			capAdd:      []string{"sys_time"},
+			capDrop:     []string{},
+			expectError: true,
+			errorContains: "Unknown capabilities in cap_add",
+		},
+		{
+			name:        "invalid cap_drop without prefix",
+			capAdd:      []string{},
+			capDrop:     []string{"chown"},
+			expectError: true,
+			errorContains: "Unknown capabilities in cap_drop",
+		},
+		{
+			name:        "unknown capabilities in cap_add",
+			capAdd:      []string{"CAP_UNKNOWN"},
+			capDrop:     []string{},
+			expectError: true,
+			errorContains: "Unknown capabilities in cap_add",
+		},
+		{
+			name:        "unknown capabilities in cap_drop",
+			capAdd:      []string{},
+			capDrop:     []string{"CAP_INVALID"},
+			expectError: true,
+			errorContains: "Unknown capabilities in cap_drop",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			task := &drivers.TaskConfig{
+				ID:        uuid.Generate(),
+				Name:      "test",
+				AllocID:   uuid.Generate(),
+				Resources: basicResources(uuid.Generate(), "test"),
+				Env:       map[string]string{
+					"NOMAD_TASK_DIR":    "/tmp/task",
+					"NOMAD_ALLOC_DIR":   "/tmp/alloc",
+					"NOMAD_SECRETS_DIR": "/tmp/secrets",
+				},
+			}
+
+			taskConfig := map[string]any{
+				"command":  "echo",
+				"args":     []string{"hello"},
+				"cap_add":  tt.capAdd,
+				"cap_drop": tt.capDrop,
+			}
+
+			must.NoError(t, task.EncodeConcreteDriverConfig(&taskConfig))
+
+			_, err := p.setOptions(task)
+			if tt.expectError {
+				must.Error(t, err)
+				must.StrContains(t, err.Error(), tt.errorContains)
+			} else {
+				must.NoError(t, err)
+			}
+		})
+	}
+}
+
 func checkLogs(t *testing.T, task *drivers.TaskConfig, outRe, errRe *regexp.Regexp) {
 	if outRe == nil && errRe == nil {
 		return
