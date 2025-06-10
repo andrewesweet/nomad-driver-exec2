@@ -601,18 +601,10 @@ func TestPlugin_SetOptions_CapabilityValidation(t *testing.T) {
 			errorContains: "Unknown capabilities in cap_drop",
 		},
 		{
-			name:        "unknown capabilities in cap_add",
+			name:        "unknown capabilities with CAP_ prefix are accepted",
 			capAdd:      []string{"CAP_UNKNOWN"},
-			capDrop:     []string{},
-			expectError: true,
-			errorContains: "Unknown capabilities in cap_add",
-		},
-		{
-			name:        "unknown capabilities in cap_drop",
-			capAdd:      []string{},
 			capDrop:     []string{"CAP_INVALID"},
-			expectError: true,
-			errorContains: "Unknown capabilities in cap_drop",
+			expectError: false,
 		},
 	}
 

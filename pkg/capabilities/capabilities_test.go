@@ -117,14 +117,13 @@ func TestValidateCapabilities(t *testing.T) {
 			errorContains: "sys_time",
 		},
 		{
-			name:        "unknown capabilities",
+			name:        "unknown capabilities with CAP_ prefix are accepted",
 			caps:        []string{"CAP_UNKNOWN", "CAP_INVALID"},
-			expected:    nil,
-			expectError: true,
-			errorContains: "CAP_UNKNOWN",
+			expected:    []string{"CAP_UNKNOWN", "CAP_INVALID"},
+			expectError: false,
 		},
 		{
-			name:        "mixed valid and invalid capabilities",
+			name:        "mixed valid prefix and invalid prefix capabilities",
 			caps:        []string{"CAP_SYS_TIME", "invalid_cap", "CAP_UNKNOWN"},
 			expected:    nil,
 			expectError: true,

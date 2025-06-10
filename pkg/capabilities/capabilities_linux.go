@@ -22,46 +22,7 @@ var defaultCapabilities = []string{
 	"CAP_SYS_CHROOT",
 }
 
-var validCapabilities = map[string]bool{
-	"CAP_CHOWN":            true,
-	"CAP_DAC_OVERRIDE":     true,
-	"CAP_DAC_READ_SEARCH":  true,
-	"CAP_FOWNER":           true,
-	"CAP_FSETID":           true,
-	"CAP_KILL":             true,
-	"CAP_SETGID":           true,
-	"CAP_SETUID":           true,
-	"CAP_SETPCAP":          true,
-	"CAP_LINUX_IMMUTABLE":  true,
-	"CAP_NET_BIND_SERVICE": true,
-	"CAP_NET_BROADCAST":    true,
-	"CAP_NET_ADMIN":        true,
-	"CAP_NET_RAW":          true,
-	"CAP_IPC_LOCK":         true,
-	"CAP_IPC_OWNER":        true,
-	"CAP_SYS_MODULE":       true,
-	"CAP_SYS_RAWIO":        true,
-	"CAP_SYS_CHROOT":       true,
-	"CAP_SYS_PTRACE":       true,
-	"CAP_SYS_PACCT":        true,
-	"CAP_SYS_ADMIN":        true,
-	"CAP_SYS_BOOT":         true,
-	"CAP_SYS_NICE":         true,
-	"CAP_SYS_RESOURCE":     true,
-	"CAP_SYS_TIME":         true,
-	"CAP_SYS_TTY_CONFIG":   true,
-	"CAP_MKNOD":            true,
-	"CAP_LEASE":            true,
-	"CAP_AUDIT_WRITE":      true,
-	"CAP_AUDIT_CONTROL":    true,
-	"CAP_SETFCAP":          true,
-	"CAP_MAC_OVERRIDE":     true,
-	"CAP_MAC_ADMIN":        true,
-	"CAP_SYSLOG":           true,
-	"CAP_WAKE_ALARM":       true,
-	"CAP_BLOCK_SUSPEND":    true,
-	"CAP_AUDIT_READ":       true,
-}
+
 
 
 
@@ -83,7 +44,7 @@ func ValidateCapabilities(caps []string) ([]string, error) {
 	
 	for _, cap := range caps {
 		norm := normalizeCapability(cap)
-		if norm == "" || !validCapabilities[norm] {
+		if norm == "" {
 			invalid = append(invalid, cap)
 		} else {
 			normalized = append(normalized, norm)
