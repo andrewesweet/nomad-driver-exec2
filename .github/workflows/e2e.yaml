@@ -15,7 +15,7 @@ jobs:
       - name: Java Diagnostics
         run: |
           echo "=== Java Alternatives ==="
-          ls -l /etc/alternatives/java*
+          ls -al /etc/alternatives
           echo -e "\n=== Java Security Files ==="
           find /usr/lib/jvm -name "java.security"
           echo -e "\n=== Java Security Directories ==="
