@@ -12,7 +12,7 @@ ordinary file system permissions.
 - Linux 5.15+
 - Cgroups v2 enabled
 - Landlock LSM enabled
-- Commands `unshare` and `nsenter`
+- Commands `unshare`, `nsenter`, and `setpriv`
 - Nomad client running as root
 
 Recent mainstream Linux distributions such as Ubuntu 22.04 and Fedora 36 meet
@@ -193,6 +193,8 @@ config {
   args          = ["/etc/os-release"]
   unveil        = ["r:/etc/os-release"]
   oom_score_adj = 500
+  cap_add       = ["CAP_SYS_TIME"]
+  cap_drop      = ["CAP_CHOWN"]
 }
 ```
 
@@ -208,6 +210,14 @@ config {
 
   - `oom_score_adj` - (optional) - The likelihood of the task being OOM killed,
   must be a positive integer. Defaults to `0`.
+
+  - `cap_add` - (optional) - A list of Linux capabilities to add to the default
+  set. Uses the same default capabilities as podman containers. Only available
+  on Linux systems.
+
+  - `cap_drop` - (optional) - A list of Linux capabilities to drop from the
+  default set. If a capability is listed in both `cap_add` and `cap_drop`, it
+  will be dropped. Only available on Linux systems.
 
 ##### cpu
 
@@ -336,6 +346,31 @@ job "java" {
         command = "${var.javabin}/java"
         args    = ["-cp", "${NOMAD_ALLOC_DIR}", "Test"]
         unveil  = ["r:${var.etcjava}"]
+      }
+    }
+  }
+}
+```
+
+#### linux capabilities
+
+This example demonstrates using Linux capabilities to grant specific privileges
+to a task. The task adds `CAP_SYS_TIME` (ability to set system time) while
+dropping `CAP_CHOWN` (ability to change file ownership) from the default set.
+
+```hcl
+job "capabilities" {
+  type = "batch"
+
+  group "group" {
+    task "setpriv-dump" {
+      driver = "exec2"
+
+      config {
+        command  = "setpriv"
+        args     = ["--dump"]
+        cap_add  = ["CAP_SYS_TIME"]
+        cap_drop = ["CAP_CHOWN"]
       }
     }
   }

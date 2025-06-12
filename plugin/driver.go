@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-hclog"
+	"github.com/hashicorp/nomad-driver-exec2/pkg/capabilities"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/resources"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/shim"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/task"
@@ -105,7 +106,7 @@ func (*Plugin) TaskConfigSchema() (*hclspec.Spec, error) {
 }
 
 func (*Plugin) Capabilities() (*drivers.Capabilities, error) {
-	return capabilities, nil
+	return driverCapabilities, nil
 }
 
 func (p *Plugin) Fingerprint(ctx context.Context) (<-chan *drivers.Fingerprint, error) {
@@ -165,6 +166,17 @@ func (p *Plugin) doFingerprint(find lookupFunc) *drivers.Fingerprint {
 		return failure(drivers.HealthStateUnhealthy, "failed to find unshare executable")
 	case uPath == "":
 		return failure(drivers.HealthStateUndetected, "unshare executable does not exist")
+	}
+
+	// inspect setpriv binary
+	sPath, sErr := find("setpriv")
+	switch {
+	case os.IsNotExist(sErr):
+		return failure(drivers.HealthStateUndetected, "setpriv executable not found")
+	case sErr != nil:
+		return failure(drivers.HealthStateUnhealthy, "failed to find setpriv executable")
+	case sPath == "":
+		return failure(drivers.HealthStateUndetected, "setpriv executable does not exist")
 	}
 
 	// create our fingerprint
@@ -544,11 +556,23 @@ func (p *Plugin) setOptions(driverTaskConfig *drivers.TaskConfig) (*shim.Options
 		unveil = append(unveil, taskConfig.Unveil...)
 	}
 
+	normalizedCapAdd, err := capabilities.ValidateCapabilities(taskConfig.CapAdd)
+	if err != nil {
+		return nil, fmt.Errorf("Unknown capabilities in cap_add: %w", err)
+	}
+	
+	normalizedCapDrop, err := capabilities.ValidateCapabilities(taskConfig.CapDrop)
+	if err != nil {
+		return nil, fmt.Errorf("Unknown capabilities in cap_drop: %w", err)
+	}
+
 	return &shim.Options{
 		Command:        taskConfig.Command,
 		Arguments:      taskConfig.Args,
 		UnveilPaths:    unveil,
 		UnveilDefaults: p.config.UnveilDefaults,
 		OOMScoreAdj:    taskConfig.OOMScoreAdj,
+		CapAdd:         normalizedCapAdd,
+		CapDrop:        normalizedCapDrop,
 	}, nil
 }

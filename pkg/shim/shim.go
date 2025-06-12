@@ -18,6 +18,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-set/v2"
+	"github.com/hashicorp/nomad-driver-exec2/pkg/capabilities"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/resources"
 	"github.com/hashicorp/nomad-driver-exec2/pkg/resources/process"
 	"github.com/hashicorp/nomad/helper/users/dynamic"
@@ -31,6 +32,8 @@ type Options struct {
 	UnveilPaths    []string
 	UnveilDefaults bool
 	OOMScoreAdj    int
+	CapAdd         []string
+	CapDrop        []string
 }
 
 // Environment represents runtime configuration.
@@ -308,6 +311,16 @@ func (e *exe) parameters(uid, gid int) []string {
 		)
 	}
 
+	caps := capabilities.ResolveCapabilities(e.opts.CapAdd, e.opts.CapDrop)
+	capString := capabilities.FormatCapabilitiesForSetpriv(caps)
+	result = append(result,
+		"setpriv",
+		"--inh-caps="+capString,
+		"--ambient-caps=-all",
+		"--bounding-set="+capString,
+		"--",
+	)
+
 	// setup unshare for ipc, pid namespaces
 	result = append(result,
 		"unshare",
@@ -334,6 +347,7 @@ func (e *exe) parameters(uid, gid int) []string {
 	if len(e.opts.Arguments) > 0 {
 		result = append(result, e.opts.Arguments...)
 	}
+
 
 	// craft complete result
 	return result
