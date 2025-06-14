@@ -1,7 +1,4 @@
 #!/bin/sh
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 
 # shellcheck disable=SC2034
 VERSION="v0.1.0"
