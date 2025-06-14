@@ -38,7 +38,7 @@ job "cdk-${var.exploit}" {
         destination = "local/cdk"
         perms       = "755"
         data        = <<EOH
-{{ with file "/home/ubuntu/repos/nomad-driver-exec2/e2e/breakout-tools/cdk" }}{{ . | base64Decode }}{{ end }}
+{{ with file "../../breakout-tools/cdk" }}{{ . | base64Decode }}{{ end }}
         EOH
       }
 

@@ -32,7 +32,7 @@ job "deepce-${lower(var.exploit)}" {
         destination = "local/deepce.sh"
         perms       = "755"
         data        = <<EOH
-{{ with file "/home/ubuntu/repos/nomad-driver-exec2/e2e/breakout-tools/deepce.sh" }}{{ . }}{{ end }}
+{{ with file "../../breakout-tools/deepce.sh" }}{{ . }}{{ end }}
         EOH
       }
 
