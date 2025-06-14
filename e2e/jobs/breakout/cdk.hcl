@@ -12,7 +12,7 @@ variable "args" {
   description = "Additional arguments for the exploit"
 }
 
-job "cdk-${var.exploit}" {
+job "cdk-breakout" {
   type = "batch"
 
   constraint {

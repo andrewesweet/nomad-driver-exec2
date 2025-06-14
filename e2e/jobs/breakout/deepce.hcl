@@ -6,7 +6,7 @@ variable "exploit" {
   description = "deepce exploit type to run"
 }
 
-job "deepce-${lower(var.exploit)}" {
+job "deepce-breakout" {
   type = "batch"
 
   constraint {
