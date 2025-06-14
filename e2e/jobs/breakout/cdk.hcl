@@ -49,23 +49,23 @@ job "cdk-${var.exploit}" {
 #!/bin/bash
 set -e
 
-echo "Starting CDK exploit: ${var.exploit}"
-echo "Arguments: ${var.args}"
+echo "Starting CDK exploit: $${var.exploit}"
+echo "Arguments: $${var.args}"
 
 # Run the CDK exploit
-if [ -n "${var.args}" ]; then
-    ./cdk run ${var.exploit} ${var.args} 2>&1 || {
-        echo "CDK exploit ${var.exploit} failed with exit code $?"
+if [ -n "$${var.args}" ]; then
+    ./cdk run $${var.exploit} $${var.args} 2>&1 || {
+        echo "CDK exploit $${var.exploit} failed with exit code $$?"
         exit 1
     }
 else
-    ./cdk run ${var.exploit} 2>&1 || {
-        echo "CDK exploit ${var.exploit} failed with exit code $?"
+    ./cdk run $${var.exploit} 2>&1 || {
+        echo "CDK exploit $${var.exploit} failed with exit code $$?"
         exit 1
     }
 fi
 
-echo "CDK exploit ${var.exploit} completed"
+echo "CDK exploit $${var.exploit} completed"
         EOH
       }
 

@@ -43,15 +43,15 @@ job "deepce-${lower(var.exploit)}" {
 #!/bin/bash
 set -e
 
-echo "Starting deepce exploit: ${var.exploit}"
+echo "Starting deepce exploit: $${var.exploit}"
 
 # Run the deepce exploit
-./deepce.sh -e ${var.exploit} 2>&1 || {
-    echo "deepce exploit ${var.exploit} failed with exit code $?"
+./deepce.sh -e $${var.exploit} 2>&1 || {
+    echo "deepce exploit $${var.exploit} failed with exit code $$?"
     exit 1
 }
 
-echo "deepce exploit ${var.exploit} completed"
+echo "deepce exploit $${var.exploit} completed"
         EOH
       }
 
