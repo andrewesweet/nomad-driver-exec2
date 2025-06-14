@@ -6,12 +6,8 @@
 package shim
 
 import (
-	"context"
-	"regexp"
 	"strings"
 	"testing"
-
-	"github.com/shoenig/test/must"
 )
 
 func TestBreakout_CDK_CapDacReadSearch(t *testing.T) {
