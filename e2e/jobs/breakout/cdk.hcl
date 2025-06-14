@@ -37,9 +37,7 @@ job "cdk-breakout" {
       template {
         destination = "local/cdk"
         perms       = "755"
-        data        = <<EOH
-{{ with file "../../breakout-tools/cdk" }}{{ . | base64Decode }}{{ end }}
-        EOH
+        data        = filebase64("./breakout-tools/cdk")
       }
 
       template {

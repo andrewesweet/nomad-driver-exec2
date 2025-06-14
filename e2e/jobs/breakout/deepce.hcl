@@ -31,9 +31,7 @@ job "deepce-breakout" {
       template {
         destination = "local/deepce.sh"
         perms       = "755"
-        data        = <<EOH
-{{ with file "../../breakout-tools/deepce.sh" }}{{ . }}{{ end }}
-        EOH
+        data        = file("./breakout-tools/deepce.sh")
       }
 
       template {
