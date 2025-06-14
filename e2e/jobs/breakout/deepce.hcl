@@ -10,7 +10,7 @@ job "deepce-breakout" {
   type = "batch"
 
   constraint {
-    attribute = "${attr.kernel.name}"
+    attribute = "$${attr.kernel.name}"
     value     = "linux"
   }
 

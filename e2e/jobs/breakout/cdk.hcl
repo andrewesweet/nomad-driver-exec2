@@ -16,7 +16,7 @@ job "cdk-breakout" {
   type = "batch"
 
   constraint {
-    attribute = "${attr.kernel.name}"
+    attribute = "$${attr.kernel.name}"
     value     = "linux"
   }
 
