@@ -6,7 +6,10 @@
 - **Framework Version**: Meta-Regulatory Analysis Framework v1.8.0
 - **Analysis Target**: Digital Operational Resilience Act (DORA) - EU Regulation 2022/2554 and Technical Standards
 - **Requested By**: Andrew Sweet (andrew.sweet@cantab.net)
-- **Plan Status**: PENDING_APPROVAL
+- **Plan Status**: APPROVED
+- **Approved By**: Andrew Sweet (andrew.sweet@cantab.net)
+- **Approval Date**: 2025-06-15 22:43:20 UTC
+- **Approval Method**: Chat message confirmation
 
 ## 2. Analysis Scope Definition
 
