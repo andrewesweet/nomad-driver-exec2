@@ -146,50 +146,44 @@ Each analysis file must include:
 - **Official Name**: Board of Governors of the Federal Reserve System
 - **Website**: https://www.federalreserve.gov/
 - **Regulatory Scope**: Central banking, monetary policy, bank holding companies, systemically important financial institutions
-- **Key Responsibilities**: Bank supervision and regulation, payment systems oversight, financial stability
-- **IT Separation Relevance**: Operational resilience guidance (SR 13-19), third-party risk management, critical infrastructure protection
+- **IT Separation Relevance**: Operational resilience guidance (SR 13-19), third-party risk management
 
 ##### 1.4.1.2 Office of the Comptroller of the Currency (OCC)
 - **Official Name**: Office of the Comptroller of the Currency
 - **Website**: https://www.occ.gov/
 - **Regulatory Scope**: National banks, federal savings associations, federal branches of foreign banks
-- **Key Responsibilities**: Bank chartering, supervision, and regulation of national banking system
-- **IT Separation Relevance**: Operational risk management, third-party relationships, cybersecurity requirements
+- **IT Separation Relevance**: Operational risk management, third-party relationships
 
 ##### 1.4.1.3 Federal Deposit Insurance Corporation (FDIC)
 - **Official Name**: Federal Deposit Insurance Corporation
 - **Website**: https://www.fdic.gov/
 - **Regulatory Scope**: State-chartered banks, deposit insurance, bank resolution
-- **Key Responsibilities**: Deposit insurance, bank supervision, resolution of failed banks
-- **IT Separation Relevance**: Operational continuity, critical systems identification, recovery and resolution planning
+- **IT Separation Relevance**: Operational continuity, critical systems identification
 
 ##### 1.4.1.4 Securities and Exchange Commission (SEC)
 - **Official Name**: U.S. Securities and Exchange Commission
 - **Website**: https://www.sec.gov/
 - **Regulatory Scope**: Securities markets, investment advisers, investment companies, public companies
-- **Key Responsibilities**: Securities regulation, market oversight, investor protection
-- **IT Separation Relevance**: Cybersecurity disclosure requirements, operational resilience for market infrastructure
+- **IT Separation Relevance**: Cybersecurity disclosure requirements, operational resilience
 
 ##### 1.4.1.5 Commodity Futures Trading Commission (CFTC)
 - **Official Name**: U.S. Commodity Futures Trading Commission
 - **Website**: https://www.cftc.gov/
 - **Regulatory Scope**: Derivatives markets, commodity futures, swaps
-- **Key Responsibilities**: Derivatives regulation, market oversight, risk management
 - **IT Separation Relevance**: Systemically important market utilities, operational risk management
 
 ##### 1.4.1.6 Financial Industry Regulatory Authority (FINRA)
 - **Official Name**: Financial Industry Regulatory Authority
 - **Website**: https://www.finra.org/
 - **Regulatory Scope**: Broker-dealers, securities professionals, self-regulatory organization
-- **Key Responsibilities**: Securities industry regulation, market surveillance, professional standards
-- **IT Separation Relevance**: Technology governance, cybersecurity requirements, operational continuity
+- **IT Separation Relevance**: Technology governance, cybersecurity requirements
 
 ##### 1.4.1.7 Federal Financial Institutions Examination Council (FFIEC)
 - **Official Name**: Federal Financial Institutions Examination Council
 - **Website**: https://www.ffiec.gov/
 - **Regulatory Scope**: Interagency coordination body for federal banking regulators (Fed, FDIC, NCUA, OCC, CFPB)
-- **Key Responsibilities**: Promoting consistency in examination activities, prescribing uniform principles and standards for federal examination of financial institutions, examiner training
-- **IT Separation Relevance**: Uniform examination standards, supervisory consistency across agencies, technology risk management guidance, operational resilience examination procedures
+- **Key Responsibilities**: Uniform examination standards, examiner training, technology risk management guidance
+- **IT Separation Relevance**: Operational resilience examination procedures, supervisory consistency across agencies
 
 #### 1.4.2 New York State
 
@@ -197,8 +191,7 @@ Each analysis file must include:
 - **Official Name**: New York State Department of Financial Services
 - **Website**: https://www.dfs.ny.gov/
 - **Regulatory Scope**: Banks, insurance companies, other financial services entities operating in New York
-- **Key Responsibilities**: Financial services regulation, consumer protection, cybersecurity oversight
-- **IT Separation Relevance**: Cybersecurity regulation (23 NYCRR 500), operational resilience, third-party service provider oversight
+- **IT Separation Relevance**: Cybersecurity regulation (23 NYCRR 500), third-party service provider oversight
 
 #### 1.4.3 United Kingdom
 
@@ -206,15 +199,13 @@ Each analysis file must include:
 - **Official Name**: Financial Conduct Authority
 - **Website**: https://www.fca.org.uk/
 - **Regulatory Scope**: Financial services firms, markets, consumer protection
-- **Key Responsibilities**: Conduct regulation, market integrity, consumer protection
-- **IT Separation Relevance**: Operational resilience framework, outsourcing requirements, technology risk management
+- **IT Separation Relevance**: Operational resilience framework, technology risk management
 
 ##### 1.4.3.2 Prudential Regulation Authority (PRA)
 - **Official Name**: Prudential Regulation Authority (Bank of England)
 - **Website**: https://www.bankofengland.co.uk/prudential-regulation
 - **Regulatory Scope**: Banks, building societies, credit unions, insurers, major investment firms
-- **Key Responsibilities**: Prudential regulation, safety and soundness, financial stability
-- **IT Separation Relevance**: Operational resilience policy (PS6/21), outsourcing and third-party risk management
+- **IT Separation Relevance**: Operational resilience policy (PS6/21), third-party risk management
 
 #### 1.4.4 Germany
 
@@ -222,8 +213,7 @@ Each analysis file must include:
 - **Official Name**: Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin)
 - **Website**: https://www.bafin.de/
 - **Regulatory Scope**: Banks, insurance companies, securities trading, asset management
-- **Key Responsibilities**: Financial services supervision, consumer protection, market integrity
-- **IT Separation Relevance**: IT governance requirements, outsourcing regulation, operational risk management
+- **IT Separation Relevance**: IT governance requirements, outsourcing regulation
 
 #### 1.4.5 European Union
 
@@ -231,29 +221,25 @@ Each analysis file must include:
 - **Official Name**: European Banking Authority
 - **Website**: https://www.eba.europa.eu/
 - **Regulatory Scope**: Banking sector regulation, supervisory convergence
-- **Key Responsibilities**: Banking regulation, stress testing, supervisory standards
-- **IT Separation Relevance**: ICT and security risk management guidelines, cloud outsourcing guidelines, operational resilience
+- **IT Separation Relevance**: ICT and security risk management guidelines, cloud outsourcing guidelines
 
 ##### 1.4.5.2 European Securities and Markets Authority (ESMA)
 - **Official Name**: European Securities and Markets Authority
 - **Website**: https://www.esma.europa.eu/
 - **Regulatory Scope**: Securities markets, investment services, market infrastructure
-- **Key Responsibilities**: Securities regulation, supervisory convergence, investor protection
-- **IT Separation Relevance**: Operational resilience for trading venues, cybersecurity requirements, outsourcing arrangements
+- **IT Separation Relevance**: Operational resilience for trading venues, cybersecurity requirements
 
 ##### 1.4.5.3 European Insurance and Occupational Pensions Authority (EIOPA)
 - **Official Name**: European Insurance and Occupational Pensions Authority
 - **Website**: https://www.eiopa.europa.eu/
 - **Regulatory Scope**: Insurance and occupational pensions sectors
-- **Key Responsibilities**: Insurance regulation, supervisory convergence, consumer protection
-- **IT Separation Relevance**: ICT security and governance, outsourcing requirements, operational resilience
+- **IT Separation Relevance**: ICT security and governance, outsourcing requirements
 
 ##### 1.4.5.4 European Central Bank (ECB)
 - **Official Name**: European Central Bank
 - **Website**: https://www.ecb.europa.eu/
 - **Regulatory Scope**: Eurozone monetary policy, banking supervision (SSM)
-- **Key Responsibilities**: Monetary policy, banking supervision, financial stability
-- **IT Separation Relevance**: Supervisory expectations for IT risk, outsourcing arrangements, operational resilience
+- **IT Separation Relevance**: Supervisory expectations for IT risk, outsourcing arrangements
 
 #### 1.4.6 India
 
@@ -261,15 +247,13 @@ Each analysis file must include:
 - **Official Name**: Reserve Bank of India
 - **Website**: https://www.rbi.org.in/
 - **Regulatory Scope**: Banking, payment systems, monetary policy, foreign exchange
-- **Key Responsibilities**: Central banking, banking supervision, payment system oversight
-- **IT Separation Relevance**: IT governance guidelines, outsourcing guidelines, cybersecurity framework
+- **IT Separation Relevance**: IT governance guidelines, outsourcing guidelines
 
 ##### 1.4.6.2 Securities and Exchange Board of India (SEBI)
 - **Official Name**: Securities and Exchange Board of India
 - **Website**: https://www.sebi.gov.in/
 - **Regulatory Scope**: Securities markets, mutual funds, investment advisers
-- **Key Responsibilities**: Securities regulation, market development, investor protection
-- **IT Separation Relevance**: Cybersecurity and cyber resilience framework, system audit requirements, business continuity planning
+- **IT Separation Relevance**: Cybersecurity framework, system audit requirements
 
 #### 1.4.7 Singapore
 
@@ -277,8 +261,7 @@ Each analysis file must include:
 - **Official Name**: Monetary Authority of Singapore
 - **Website**: https://www.mas.gov.sg/
 - **Regulatory Scope**: Banking, insurance, securities, payment services, monetary policy
-- **Key Responsibilities**: Financial services regulation, monetary policy, financial stability
-- **IT Separation Relevance**: Technology risk management guidelines, outsourcing requirements, operational resilience
+- **IT Separation Relevance**: Technology risk management guidelines, outsourcing requirements
 
 ## 2. Standardized Analysis Methodology
 
@@ -404,7 +387,7 @@ Each analysis file must include:
 ## Document Information
 - **Title**: [Full regulation title]
 - **Source URI**: [Official source URL]
-- **Analysis Date**: [Date of analysis]
+- **Analysis Date**: [YYYY-MM-DD HH:MM:SS UTC timestamp of analysis]
 - **Document Status**: [In force/Draft/Proposed]
 - **Reference**: [Official reference number]
 - **Analysis Version**: [Version number - see Section 3.2]
@@ -473,36 +456,13 @@ Each analysis file must include:
 
 ## Implementation Guidance for Milo Task Driver Plugin
 [Specific technical guidance including threat actor considerations, traditional separation requirements, and STRIDE-based security separation controls for multi-tenant environments]
-### 1. [Category 1 - e.g., Environment Separation]
-#### 1.1 [Specific Requirement]
-**Requirement**: [Clear statement of requirement]
-**Source**: [Document title, Article/Section reference]
-**Location**: [Precise location identifier]
-**Context**: [Relevant surrounding text]
-
-## Threat Actor Requirements Identified
-### 1. [Category 1 - e.g., Nation-State Actors]
-#### 1.1 [Specific Threat Actor Requirement]
-**Requirement**: [Clear statement of threat actor consideration requirement]
-**Source**: [Document title, Article/Section reference]
-**Location**: [Precise location identifier]
-**Context**: [Relevant surrounding text]
-
-## Summary of Key Separation Requirements
-[Categorized summary]
-
-## Summary of Key Threat Actor Requirements
-[Categorized summary of specific threat actors that must be considered]
-
-## Implementation Guidance for Milo Task Driver Plugin
-[Specific technical guidance including threat actor considerations]
 
 ## Appendix: Sources Inspected During Analysis
 ### A.1 Primary Sources Analyzed
 **A.1.1 [Source Title]**
 - **URI**: [Full URL]
 - **Document Type**: [Regulation/Guidance/Standard/etc.]
-- **Access Date**: [Date accessed]
+- **Accessed On**: [YYYY-MM-DD HH:MM:SS UTC timestamp when source was accessed]
 - **Analysis Status**: [Analyzed/Reviewed/Referenced]
 - **Relevance**: [High/Medium/Low/None]
 - **Notes**: [Brief description of content and relevance to analysis]
@@ -511,7 +471,7 @@ Each analysis file must include:
 **A.2.1 [Source Title]**
 - **URI**: [Full URL]
 - **Document Type**: [Regulation/Guidance/Standard/etc.]
-- **Access Date**: [Date accessed]
+- **Accessed On**: [YYYY-MM-DD HH:MM:SS UTC timestamp when source was accessed]
 - **Analysis Status**: [Reviewed/Consulted/Not Relevant]
 - **Relevance**: [High/Medium/Low/None]
 - **Notes**: [Brief description and reason for inclusion/exclusion]
@@ -584,7 +544,7 @@ Each analysis file must include:
 3. **Location Identifier**: Precise location (e.g., "Article 8, paragraph 4, point (b)")
 4. **Context Quote**: Exact text containing the requirement
 5. **Source URI**: Official source URL
-6. **Analysis Date**: Date of analysis completion
+6. **Analysis Date**: UTC timestamp of analysis completion
 
 **Legal-Style Numbering**: 1.2.3 format throughout
 - 1.x: Major categories (e.g., Environment Separation)
@@ -848,10 +808,12 @@ Based on DORA analysis findings, establish consistent categories across all regu
 - Staging and pre-production separation
 
 **2. Access Control Separation**
-- Role-based access control (RBAC)
-- Segregation of duties
-- Privileged access management
-- Need-to-know access principles
+- Role-based access control (RBAC) for systems and applications
+- Segregation of duties between technical systems and processes
+- Privileged access management for technical accounts and service identities
+- Need-to-know access principles for system-to-system communications
+
+**Scope Exclusion**: Human-to-machine interactions such as segregation of duties for human users and privileged access management for humans are excluded from this analysis. Focus is on technical infrastructure controls and system-to-system access management.
 
 **3. Network and Infrastructure Separation**
 - Network segmentation and isolation
@@ -1173,8 +1135,7 @@ Based on DORA analysis findings, establish consistent categories across all regu
 
 ### A.5 Regulatory Authority Coverage
 **18 Regulatory Authorities Identified** across 7 jurisdictions:
-- **United States Federal**: FFIEC, OCC, Federal Reserve, FDIC, NCUA, CFTC, SEC
-- **New York State**: NYDFS
+- **United States**: FFIEC, OCC, Federal Reserve, FDIC, NCUA, CFTC, SEC, NYDFS
 - **United Kingdom**: Bank of England, FCA, PRA
 - **Germany**: BaFin
 - **European Union**: EBA, ESMA, EIOPA, ECB
@@ -1186,7 +1147,7 @@ Based on DORA analysis findings, establish consistent categories across all regu
 - **Primary Sources**: Fully analyzed regulatory documents with complete analysis
 - **Secondary Sources**: Partially reviewed for context and metadata
 - **Sources Not Accessed**: Identified but not analyzed with clear rationale
-- **Source Metadata**: URI, document type, access date, analysis status, relevance, notes
+- **Source Metadata**: URI, document type, accessed on timestamp (UTC), analysis status, relevance, notes
 - **Analysis Completeness**: Percentage metrics with transparency on coverage limitations
 
 ### A.7 Implementation Context for Milo Plugin
