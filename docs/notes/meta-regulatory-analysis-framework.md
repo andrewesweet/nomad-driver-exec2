@@ -1,11 +1,11 @@
 # Meta-Regulatory Analysis Framework: Plan of Plans
 
 ## Document Information
-- **Document Version**: 1.7.0
+- **Document Version**: 1.8.0
 - **Title**: Meta-Framework for Multi-Regulation IT Separation Requirements Analysis
 - **Purpose**: Systematic approach for analyzing multiple financial services regulations
 - **Created**: June 15, 2025
-- **Last Updated**: June 15, 2025
+- **Last Updated**: 2025-06-15 22:36:29 UTC
 - **Based on**: DORA Analysis Experience (48 separation requirements identified)
 - **Target**: Support Milo Nomad task driver plugin multi-tenant security design
 
@@ -263,7 +263,185 @@ Each analysis file must include:
 - **Regulatory Scope**: Banking, insurance, securities, payment services, monetary policy
 - **IT Separation Relevance**: Technology risk management guidelines, outsourcing requirements
 
-## 2. Standardized Analysis Methodology
+## 2. Mandatory Source Consultation Planning Phase
+
+### 2.1 Planning Phase Requirements
+
+#### 2.1.1 Mandatory Planning Before Analysis
+**Requirement**: When requested to analyze any piece of legislation (e.g., EU's DORA) or regulatory body (e.g., FFIEC), a comprehensive source consultation plan MUST be produced and approved by the user before proceeding with any regulatory analysis.
+
+**Scope**: All regulatory analysis requests including:
+- Primary legislation analysis (e.g., DORA, MiFID II, Basel III)
+- Regulatory body guidance analysis (e.g., FFIEC, EBA, FCA)
+- Technical standards analysis (e.g., RTS, ITS)
+- Cross-jurisdictional comparative analysis
+
+#### 2.1.2 Source Consultation Plan Template
+Each source consultation plan shall be created as a markdown file following this structure:
+
+```markdown
+# [Regulation/Authority] Source Consultation Plan
+
+## 1. Planning Information
+- **Plan Version**: [Semantic version - MAJOR.MINOR.PATCH]
+- **Created**: [YYYY-MM-DD HH:MM:SS UTC]
+- **Framework Version**: [Meta-framework version consulted]
+- **Analysis Target**: [Specific regulation or regulatory body]
+- **Requested By**: [User identifier]
+- **Plan Status**: PENDING_APPROVAL
+
+## 2. Analysis Scope Definition
+
+### 2.1 Primary Analysis Objectives
+- [Specific separation requirements to identify]
+- [Threat actor specifications to analyze]
+- [Multi-tenant relevance assessment]
+
+### 2.2 Scope Exclusions
+- Human-to-machine interactions (per framework v1.7.0)
+- [Other specific exclusions]
+
+## 3. Source Identification Strategy
+
+### 3.1 Primary Sources (Tier 1)
+[List of primary regulatory documents to analyze]
+
+### 3.2 Secondary Sources (Tier 2)
+[List of supporting technical standards and guidance]
+
+### 3.3 Tertiary Sources (Tier 3)
+[List of interpretive guidance and industry materials]
+
+## 4. Source Access and Acquisition Plan
+
+### 4.1 Publicly Available Sources
+[Sources accessible via official websites and legal databases]
+
+### 4.2 Subscription-Required Sources
+[Sources requiring paid access or subscriptions]
+
+### 4.3 Restricted Access Sources
+[Sources requiring special permissions or credentials]
+
+## 5. Analysis Methodology
+
+### 5.1 Keyword Search Strategy
+**Traditional Separation Keywords**:
+- "separat" / "separation"
+- "segregat" / "segregation"
+- "isolat" / "isolation"
+- [Additional keywords specific to regulation]
+
+**STRIDE-Enhanced Keywords**:
+- "spoofing" / "authentication" / "identity"
+- "tampering" / "integrity" / "modification"
+- "repudiation" / "audit" / "logging"
+- "disclosure" / "confidentiality" / "privacy"
+- "denial" / "availability" / "service"
+- "elevation" / "privilege" / "authorization"
+
+### 5.2 Source Attribution Requirements
+- UTC timestamp format: YYYY-MM-DD HH:MM:SS UTC
+- Complete URI documentation with permalinks where available
+- Document version and publication date tracking
+- Access method and retrieval date recording
+
+## 6. Expected Deliverables
+
+### 6.1 Analysis Documents
+[List of planned analysis documents with file naming convention]
+
+### 6.2 Requirements Matrix
+[Planned consolidation and categorization approach]
+
+### 6.3 Implementation Guidance
+[Planned technical implementation recommendations]
+
+## 7. Resource Requirements and Timeline
+
+### 7.1 Estimated Analysis Duration
+[Time estimate for each analysis phase]
+
+### 7.2 Source Access Requirements
+[Any special access needs or potential delays]
+
+### 7.3 Dependencies
+[External dependencies that could affect timeline]
+
+## 8. Risk Assessment
+
+### 8.1 Source Availability Risks
+[Potential issues with source access or availability]
+
+### 8.2 Scope Creep Risks
+[Potential for analysis expansion beyond planned scope]
+
+### 8.3 Quality Assurance Measures
+[Planned verification and validation approaches]
+
+## Appendix: Preliminary Source Inventory
+[Initial list of identified sources with basic metadata]
+
+---
+*Plan created: [UTC timestamp]*
+*Framework version: [Version]*
+*Status: PENDING_APPROVAL - User review and confirmation required before proceeding*
+```
+
+#### 2.1.3 Plan File Naming Convention
+Source consultation plans shall be named using the following convention:
+- **Format**: `{regulation-code}-source-consultation-plan.md`
+- **Location**: `docs/notes/{regulation-area}/`
+- **Examples**:
+  - `dora-source-consultation-plan.md`
+  - `ffiec-source-consultation-plan.md`
+  - `mifid2-source-consultation-plan.md`
+
+#### 2.1.4 User Review and Approval Workflow
+
+##### 2.1.4.1 Plan Submission Requirements
+1. **Complete Plan Creation**: Source consultation plan must be fully completed per template
+2. **Repository Commit**: Plan must be committed to appropriate branch
+3. **User Notification**: User must be explicitly notified that plan is ready for review
+4. **Approval Request**: Explicit request for user approval before proceeding
+
+##### 2.1.4.2 User Review Process
+1. **Plan Review**: User reviews source consultation plan for completeness and accuracy
+2. **Feedback Integration**: Any user feedback must be incorporated into plan
+3. **Formal Approval**: User must provide explicit approval to proceed with analysis
+4. **Plan Status Update**: Plan status updated from PENDING_APPROVAL to APPROVED
+
+##### 2.1.4.3 Approval Documentation
+- **Approval Date**: UTC timestamp of user approval
+- **Approved Version**: Specific version of plan approved by user
+- **Approval Method**: How approval was communicated (e.g., chat message, comment)
+- **Plan Updates**: Any modifications made during review process
+
+#### 2.1.5 Enforcement and Compliance
+
+##### 2.1.5.1 Mandatory Compliance
+- **No Analysis Without Plan**: Regulatory analysis SHALL NOT commence without approved source consultation plan
+- **Plan Adherence**: Analysis must follow approved plan scope and methodology
+- **Deviation Documentation**: Any deviations from approved plan must be documented and justified
+
+##### 2.1.5.2 Plan Updates During Analysis
+- **Scope Changes**: Material scope changes require plan update and re-approval
+- **Source Additions**: New sources discovered during analysis must be added to plan
+- **Methodology Adjustments**: Significant methodology changes require plan revision
+
+### 2.2 Integration with Existing Framework
+
+#### 2.2.1 Framework Version Compatibility
+- **Current Framework**: v1.7.0 includes mandatory planning phase
+- **Backward Compatibility**: Previous analyses conducted without planning phase remain valid
+- **Future Analyses**: All new regulatory analyses must include planning phase
+
+#### 2.2.2 Document Structure Integration
+- **Legal-Style Numbering**: Plans follow same numbering convention as framework
+- **Source Tracking**: Plans integrate with comprehensive source tracking methodology
+- **Version Control**: Plans subject to same semantic versioning as other framework documents
+
+## 3. Standardized Analysis Methodology
 
 ### 2.1 Analysis Phase Structure
 
