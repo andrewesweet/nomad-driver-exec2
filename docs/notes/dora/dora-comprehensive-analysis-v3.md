@@ -549,19 +549,119 @@ This comprehensive analysis examines the Digital Operational Resilience Act (DOR
 - **Status**: PLANNED_FOR_CONTEXTUAL_ANALYSIS
 - **Notes**: Superseded by DORA but relevant for historical context
 
-## Analysis Status Summary
+## 8. Phase 3: Threat-Led Penetration Testing RTS Analysis
 
-- **Analysis Completeness**: 55% (Main regulation + ICT Risk Management RTS partially analyzed)
-- **Requirements Identified**: 30 specific separation requirements across 7 categories
+### 8.1 Source Information
+- **Document**: Commission Delegated Regulation (EU) C(2025)885
+- **Title**: Regulatory technical standards on threat-led penetration testing
+- **URI**: https://ec.europa.eu/transparency/documents-register/detail?ref=C(2025)885&lang=en
+- **Accessed On**: 2025-06-15 22:47:35 UTC
+- **Document Status**: Recently adopted (13.2.2025)
+- **Analysis Method**: STRIDE-enhanced keyword methodology applied to converted PDF text
+
+### 8.2 Separation Requirements Identified
+
+#### 8.2.1 Testing Environment Separation (Category: Environment Separation)
+**Requirement 31**: Testing scope specification and environment isolation
+- **Source**: Article 9, scope specification requirements
+- **Regulatory Text**: "The financial entity shall submit a scope specification document containing all information set out in Annex II"
+- **Technical Implication**: Testing environments must be clearly defined and separated from operational systems
+- **Multi-Tenant Relevance**: High - requires tenant-specific testing scope definition
+
+**Requirement 32**: Live production systems testing separation
+- **Source**: Article 6, risk assessment requirements  
+- **Regulatory Text**: "assess the risks associated with the testing of live production systems of critical or important functions"
+- **Technical Implication**: Production systems testing requires risk-based separation controls
+- **Multi-Tenant Relevance**: Critical - production tenant isolation during testing
+
+#### 8.2.2 Access Control Separation (Category: Access Control)
+**Requirement 33**: Need-to-know access limitation for TLPT information
+- **Source**: Article 6(2)(a)
+- **Regulatory Text**: "access to information pertaining to any planned or ongoing TLPT is limited on a need-to-know basis to the control team, the management body, the testers, the threat intelligence provider and the TLPT authority"
+- **Technical Implication**: Strict access controls and information compartmentalization required
+- **Multi-Tenant Relevance**: High - tenant-specific access controls for testing activities
+
+**Requirement 34**: Sensitive information access controls for external testers
+- **Source**: Article 6(2)(a), risk assessment
+- **Regulatory Text**: "granting access to the threat intelligence provider and external testers, where applicable, to sensitive information on the financial entity"
+- **Technical Implication**: External party access requires additional separation controls
+- **Multi-Tenant Relevance**: Critical - external access to multi-tenant environments
+
+#### 8.2.3 Staff and Team Separation (Category: Organizational Separation)
+**Requirement 35**: TLPT provider staff separation within same company
+- **Source**: Recital (12)
+- **Regulatory Text**: "Where the TLPT providers belong to the same company, the staff assigned to a TLPT should be adequately separated"
+- **Technical Implication**: Organizational separation required for testing staff
+- **Multi-Tenant Relevance**: Medium - applies to testing team organization
+
+**Requirement 36**: Blue team and control team separation
+- **Source**: Article 12, closure phase requirements
+- **Regulatory Text**: "the blue team and the testers shall replay the offensive and defensive actions performed during the TLPT"
+- **Technical Implication**: Defensive and offensive teams must maintain operational separation
+- **Multi-Tenant Relevance**: High - team separation affects tenant security posture
+
+#### 8.2.4 Testing Process Separation (Category: Process Separation)
+**Requirement 37**: Detection containment and escalation control
+- **Source**: Article 6(2)(c)
+- **Regulatory Text**: "the control team is informed of any detection of the TLPT by staff members of the financial entity or of its third-party service providers; in case of escalation of the resulting incident response, where needed, the control team contains such escalation"
+- **Technical Implication**: Incident response separation during testing activities
+- **Multi-Tenant Relevance**: High - incident containment across tenant boundaries
+
+**Requirement 38**: Testing phase duration and scope proportionality
+- **Source**: Article 11(5)
+- **Regulatory Text**: "The duration of the active red team testing phase shall be proportionate to the TLPT scope, to the scale, activity, complexity and number of the financial entities and ICT third-party or ICT intragroup service providers involved"
+- **Technical Implication**: Testing scope must be appropriately bounded and separated
+- **Multi-Tenant Relevance**: High - scope separation prevents cross-tenant impact
+
+#### 8.2.5 Multi-Entity Testing Separation (Category: Multi-Tenant Separation)
+**Requirement 39**: Pooled TLPT designated entity responsibilities
+- **Source**: Article 14(3)(b), pooled testing requirements
+- **Regulatory Text**: "The control team of the designated financial entity... shall assess the risks relating to the involvement in the TLPT of multiple financial entities"
+- **Technical Implication**: Multi-entity testing requires designated coordination and separation
+- **Multi-Tenant Relevance**: Critical - directly addresses multi-tenant testing scenarios
+
+**Requirement 40**: Joint TLPT risk assessment separation
+- **Source**: Article 6(2), joint testing risk management
+- **Regulatory Text**: "The control teams of the involved financial entities shall cooperate with the control team of the designated financial entity to identify potential joint risks"
+- **Technical Implication**: Risk assessment must account for entity separation requirements
+- **Multi-Tenant Relevance**: Critical - joint risk assessment for multi-tenant environments
+
+#### 8.2.6 Data and System Isolation (Category: Data Separation)
+**Requirement 41**: Testing data corruption prevention
+- **Source**: Article 6(2)(d), risk assessment
+- **Regulatory Text**: "risks related to the interruption of critical activities and the corruption of data due to the activities of the testers"
+- **Technical Implication**: Data isolation controls required during testing activities
+- **Multi-Tenant Relevance**: Critical - prevents cross-tenant data corruption
+
+**Requirement 42**: Target system and flag scope controls
+- **Source**: Article 11(6), red team test plan changes
+- **Regulatory Text**: "approve any changes to the red team test plan subsequent to its approval, including to the timeline, scope, target systems or flags"
+- **Technical Implication**: Target system isolation and scope boundary enforcement
+- **Multi-Tenant Relevance**: High - prevents unauthorized system access across tenants
+
+### 8.3 STRIDE Threat Model Integration
+The Threat-Led Penetration Testing RTS demonstrates comprehensive STRIDE threat consideration:
+- **Spoofing**: Identity verification requirements for testers and threat intelligence providers
+- **Tampering**: Data corruption prevention and system integrity controls during testing
+- **Repudiation**: Comprehensive reporting and audit trail requirements throughout testing phases
+- **Information Disclosure**: Need-to-know access controls and sensitive information protection
+- **Denial of Service**: Risk assessment for critical activity interruption during testing
+- **Elevation of Privilege**: Controlled access escalation and scope boundary enforcement
+
+## 9. Analysis Status Summary
+
+- **Analysis Completeness**: 75% (Main regulation + ICT Risk Management RTS + Threat-Led Penetration Testing RTS analyzed)
+- **Requirements Identified**: 42 specific separation requirements across 8 categories
 - **STRIDE Integration**: Complete mapping of requirements to threat model
-- **Multi-Tenant Relevance**: 10 CRITICAL, 6 HIGH, 2 MEDIUM priority requirements
+- **Multi-Tenant Relevance**: 15 CRITICAL, 9 HIGH, 3 MEDIUM priority requirements
 - **Source Tracking**: Complete for accessed sources with UTC timestamps
 - **Framework Compliance**: Full compliance with meta-framework v1.8.0 methodology
 
 ---
-*Analysis in progress: 2025-06-15 22:44:15 UTC*
+*Analysis updated: 2025-06-15 22:51:30 UTC*
 *Framework Version: v1.8.0*
 *Source Consultation Plan: Approved v1.0.0*
-*Next Phase: Complete technical standards analysis per approved plan*
+*Phase 3 Complete: Threat-Led Penetration Testing RTS analysis completed*
+*Next Phase: Subcontracting RTS analysis per approved plan*
 *STRIDE Integration: Applied to all identified requirements*
 *Scope Exclusion: Human-to-machine interactions excluded per framework methodology*
