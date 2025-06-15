@@ -9,13 +9,13 @@
 
 ## Executive Summary
 
-This meta-framework establishes a systematic methodology for analyzing multiple financial services regulations to identify IT separation requirements. Building on the successful DORA analysis that identified 48 specific separation requirements across 6 phases, this framework enables:
+This meta-framework establishes a systematic methodology for analyzing multiple financial services regulations to identify IT separation requirements with primary focus on technical infrastructure concerns. Building on the successful DORA analysis that identified 48 specific separation requirements across 6 phases, this framework enables:
 
-1. **Standardized Analysis**: Consistent methodology across different regulatory sources
-2. **Comparative Assessment**: Systematic comparison of requirements between regulations
-3. **Thematic Consolidation**: Unified requirement categories spanning multiple regulations
+1. **Standardized Analysis**: Consistent methodology across different regulatory sources with technical infrastructure prioritization
+2. **Comparative Assessment**: Systematic comparison of requirements between regulations focusing on technical implementation details
+3. **Thematic Consolidation**: Unified requirement categories spanning multiple regulations with emphasis on technical concerns
 4. **Version Control**: Preservation of all analysis stages and iterations
-5. **Implementation Guidance**: Actionable requirements for multi-tenant security design
+5. **Implementation Guidance**: Actionable technical requirements for multi-tenant security design
 
 ## 1. Regulation Identification and Prioritization
 
@@ -307,6 +307,27 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 - 4.3: Implementation complexity analysis
 - 4.4: Compliance verification framework
 
+#### 2.1.5 Technical Infrastructure Prioritization Framework
+**Objective**: Ensure comprehensive coverage of technical infrastructure concerns over process-oriented requirements
+**Scope**: All analysis phases
+
+**Technical Infrastructure Priority Categories** (require fuller analysis):
+1. **Physical Infrastructure**: Physical machines, hardware, data centers, geographic separation
+2. **Virtualization Layer**: Virtual machines, hypervisors, virtualization security, resource allocation
+3. **Containerization**: Containers, orchestration platforms, container security, isolation mechanisms
+4. **Process Isolation**: Process separation, memory isolation, CPU isolation, namespace separation
+5. **Network Infrastructure**: Network communication, service meshes, network segmentation, traffic isolation
+6. **Shared Resources**: Shared storage, shared memory, shared computing resources, multi-tenant resource management
+7. **Orchestration Systems**: Container orchestration, workload scheduling, resource management platforms
+
+**Process Concerns** (note briefly but do not elaborate extensively):
+- Organizational procedures, governance frameworks, approval processes, documentation requirements
+- Focus on technical implementation requirements rather than procedural compliance
+
+**Analysis Approach**:
+- For technical infrastructure requirements: Provide detailed technical specifications, implementation guidance, and architectural considerations
+- For process requirements: Note the requirement but focus on technical controls that support the process
+
 ### 2.2 Consistent Analysis Framework
 
 #### 2.2.1 Document Structure Template
@@ -322,9 +343,40 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 - **Analysis Version**: [Version number - see Section 3.2]
 
 ## Analysis Methodology
-[Standard keyword list and search approach]
+[Standard keyword list and search approach with technical infrastructure prioritization]
 
-## Separation Requirements Identified
+## Technical Infrastructure Separation Requirements Identified
+### 1. [Category 1 - e.g., Physical Infrastructure Separation]
+#### 1.1 [Specific Technical Requirement]
+**Requirement**: [Clear statement of technical infrastructure requirement]
+**Source**: [Document title, Article/Section reference]
+**Location**: [Precise location identifier]
+**Context**: [Relevant surrounding text]
+**Technical Implementation**: [Detailed technical specifications and architectural considerations]
+
+## Process-Related Separation Requirements (Brief Summary)
+### 1. [Category 1 - e.g., Organizational Controls]
+#### 1.1 [Process Requirement]
+**Requirement**: [Brief statement of process requirement]
+**Source**: [Document title, Article/Section reference]
+**Technical Controls**: [Technical mechanisms that support this process requirement]
+
+## Threat Actor Requirements Identified
+### 1. [Category 1 - e.g., Nation-State Actors]
+#### 1.1 [Specific Threat Actor Requirement]
+**Requirement**: [Clear statement of threat actor consideration requirement]
+**Source**: [Document title, Article/Section reference]
+**Location**: [Precise location identifier]
+**Context**: [Relevant surrounding text]
+
+## Summary of Key Technical Infrastructure Requirements
+[Categorized summary emphasizing technical implementation details]
+
+## Summary of Key Threat Actor Requirements
+[Categorized summary of specific threat actors that must be considered]
+
+## Implementation Guidance for Milo Task Driver Plugin
+[Specific technical guidance including threat actor considerations and detailed infrastructure requirements]
 ### 1. [Category 1 - e.g., Environment Separation]
 #### 1.1 [Specific Requirement]
 **Requirement**: [Clear statement of requirement]
@@ -396,6 +448,15 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 - Applications: "application", "workload", "service", "function"
 - Environment: "environment", "production", "testing", "development"
 - Infrastructure: "infrastructure", "computing", "resource", "system"
+
+**Technical Infrastructure Keywords** (prioritize for detailed analysis):
+- Physical infrastructure: "physical machine", "server", "hardware", "data center", "geographic"
+- Virtualization: "virtual machine", "VM", "hypervisor", "virtualization", "virtual"
+- Containerization: "container", "docker", "kubernetes", "orchestration", "pod"
+- Process isolation: "process", "namespace", "cgroup", "memory isolation", "CPU isolation"
+- Network infrastructure: "network", "service mesh", "microservice", "API gateway", "load balancer"
+- Shared resources: "shared storage", "shared memory", "resource pool", "multi-tenant"
+- Orchestration: "scheduler", "workload management", "resource allocation", "cluster"
 
 **Threat Actor Keywords** (apply to all regulations):
 - Threat actors: "threat actor", "threat actors", "adversary", "adversaries", "attacker", "attackers"
@@ -841,9 +902,9 @@ Based on DORA analysis findings, establish consistent categories across all regu
 
 ---
 
-*Framework Version: v1.4*
+*Framework Version: v1.5*
 *Created: June 15, 2025*
-*Updated: June 15, 2025 - Added comprehensive source tracking and appendix requirements for all inspected sources*
-*Previous Updates: v1.3 - Added comprehensive regulatory authority listings for 7 jurisdictions, threat actor analysis requirements, and threat actor identification methodology*
+*Updated: June 15, 2025 - Added technical infrastructure prioritization framework, enhanced technical keywords, and updated analysis methodology to prioritize technical concerns over process concerns*
+*Previous Updates: v1.4 - Added comprehensive source tracking and appendix requirements; v1.3 - Added regulatory authority listings and threat actor analysis requirements*
 *Next Review: September 15, 2025*
 *Owner: Milo Task Driver Plugin Development Team*
