@@ -1,9 +1,11 @@
 # Meta-Regulatory Analysis Framework: Plan of Plans
 
 ## Document Information
+- **Document Version**: 1.7.0
 - **Title**: Meta-Framework for Multi-Regulation IT Separation Requirements Analysis
 - **Purpose**: Systematic approach for analyzing multiple financial services regulations
 - **Created**: June 15, 2025
+- **Last Updated**: June 15, 2025
 - **Based on**: DORA Analysis Experience (48 separation requirements identified)
 - **Target**: Support Milo Nomad task driver plugin multi-tenant security design
 
@@ -16,6 +18,27 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 3. **Thematic Consolidation**: Unified requirement categories spanning multiple regulations with emphasis on technical concerns
 4. **Version Control**: Preservation of all analysis stages and iterations
 5. **Implementation Guidance**: Actionable technical requirements for multi-tenant security design
+
+## Document Versioning and Analysis File Management
+
+### Semantic Versioning for Framework and Planning Documents
+- **MAJOR.MINOR.PATCH** format (e.g., 1.7.0)
+- **MAJOR**: Fundamental methodology changes, new analysis categories
+- **MINOR**: Enhanced features, new regulatory authorities, expanded scope
+- **PATCH**: Bug fixes, clarifications, minor updates
+
+### Analysis File Version Control Strategy
+- **Single Analysis File**: One file per regulation/authority (no separate v1, v2 files)
+- **Git Version Control**: Rely on git history for tracking changes and iterations
+- **Framework Version Recording**: Each analysis file records the framework version consulted
+- **Document Version Headers**: All planning and framework files include semantic version headers
+
+### Analysis File Template Requirements
+Each analysis file must include:
+- **Framework Version Consulted**: Version of meta-framework used for analysis
+- **Planning Document Version**: Version of any planning documents referenced
+- **Analysis Completion Date**: UTC timestamp of analysis completion
+- **Document Version**: Semantic version of the analysis document itself
 
 ## 1. Regulation Identification and Prioritization
 
@@ -1189,9 +1212,9 @@ Based on DORA analysis findings, establish consistent categories across all regu
 
 ---
 
-*Framework Version: v1.6*
+*Document Version: 1.7.0*
 *Created: June 15, 2025*
-*Updated: June 15, 2025 - Added hierarchical document structure and comprehensive session context summary; Expanded separation requirements scope to include STRIDE threat model concepts*
-*Previous Updates: v1.5 - Added technical infrastructure prioritization framework; v1.4 - Added comprehensive source tracking and appendix requirements; v1.3 - Added regulatory authority listings and threat actor analysis requirements*
+*Last Updated: June 15, 2025 - Implemented semantic versioning methodology and document version tracking*
+*Previous Updates: v1.6 - Added hierarchical document structure and STRIDE threat model concepts; v1.5 - Added technical infrastructure prioritization framework; v1.4 - Added comprehensive source tracking and appendix requirements*
 *Next Review: September 15, 2025*
 *Owner: Milo Task Driver Plugin Development Team*

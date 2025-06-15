@@ -241,7 +241,7 @@ Systematic search for separation, segregation, and isolation requirements using 
 
 ---
 *Analysis completed: June 15, 2025*
-*Framework Version: v1.6 (Expanded Separation Scope with STRIDE Threat Model)*
+*Framework Version Consulted: v1.7.0*
 *Total separation requirements identified: 12 specific requirements across 6 categories*
 *Total threat actor requirements identified: 4 specific requirements across 3 categories*
 *Source tracking: Complete appendix with 3 sources documented*
