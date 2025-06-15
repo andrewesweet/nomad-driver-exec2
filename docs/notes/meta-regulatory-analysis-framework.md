@@ -115,6 +115,141 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 3. **Regulatory Impact Assessments**: Review impact studies for separation requirements
 4. **Stakeholder Consultation**: Industry feedback on regulatory interpretations
 
+### 1.4 Regulatory Authorities by Jurisdiction
+
+#### 1.4.1 United States (Federal)
+
+##### 1.4.1.1 Federal Reserve System (Fed)
+- **Official Name**: Board of Governors of the Federal Reserve System
+- **Website**: https://www.federalreserve.gov/
+- **Regulatory Scope**: Central banking, monetary policy, bank holding companies, systemically important financial institutions
+- **Key Responsibilities**: Bank supervision and regulation, payment systems oversight, financial stability
+- **IT Separation Relevance**: Operational resilience guidance (SR 13-19), third-party risk management, critical infrastructure protection
+
+##### 1.4.1.2 Office of the Comptroller of the Currency (OCC)
+- **Official Name**: Office of the Comptroller of the Currency
+- **Website**: https://www.occ.gov/
+- **Regulatory Scope**: National banks, federal savings associations, federal branches of foreign banks
+- **Key Responsibilities**: Bank chartering, supervision, and regulation of national banking system
+- **IT Separation Relevance**: Operational risk management, third-party relationships, cybersecurity requirements
+
+##### 1.4.1.3 Federal Deposit Insurance Corporation (FDIC)
+- **Official Name**: Federal Deposit Insurance Corporation
+- **Website**: https://www.fdic.gov/
+- **Regulatory Scope**: State-chartered banks, deposit insurance, bank resolution
+- **Key Responsibilities**: Deposit insurance, bank supervision, resolution of failed banks
+- **IT Separation Relevance**: Operational continuity, critical systems identification, recovery and resolution planning
+
+##### 1.4.1.4 Securities and Exchange Commission (SEC)
+- **Official Name**: U.S. Securities and Exchange Commission
+- **Website**: https://www.sec.gov/
+- **Regulatory Scope**: Securities markets, investment advisers, investment companies, public companies
+- **Key Responsibilities**: Securities regulation, market oversight, investor protection
+- **IT Separation Relevance**: Cybersecurity disclosure requirements, operational resilience for market infrastructure
+
+##### 1.4.1.5 Commodity Futures Trading Commission (CFTC)
+- **Official Name**: U.S. Commodity Futures Trading Commission
+- **Website**: https://www.cftc.gov/
+- **Regulatory Scope**: Derivatives markets, commodity futures, swaps
+- **Key Responsibilities**: Derivatives regulation, market oversight, risk management
+- **IT Separation Relevance**: Systemically important market utilities, operational risk management
+
+##### 1.4.1.6 Financial Industry Regulatory Authority (FINRA)
+- **Official Name**: Financial Industry Regulatory Authority
+- **Website**: https://www.finra.org/
+- **Regulatory Scope**: Broker-dealers, securities professionals, self-regulatory organization
+- **Key Responsibilities**: Securities industry regulation, market surveillance, professional standards
+- **IT Separation Relevance**: Technology governance, cybersecurity requirements, operational continuity
+
+#### 1.4.2 New York State
+
+##### 1.4.2.1 New York State Department of Financial Services (NYDFS)
+- **Official Name**: New York State Department of Financial Services
+- **Website**: https://www.dfs.ny.gov/
+- **Regulatory Scope**: Banks, insurance companies, other financial services entities operating in New York
+- **Key Responsibilities**: Financial services regulation, consumer protection, cybersecurity oversight
+- **IT Separation Relevance**: Cybersecurity regulation (23 NYCRR 500), operational resilience, third-party service provider oversight
+
+#### 1.4.3 United Kingdom
+
+##### 1.4.3.1 Financial Conduct Authority (FCA)
+- **Official Name**: Financial Conduct Authority
+- **Website**: https://www.fca.org.uk/
+- **Regulatory Scope**: Financial services firms, markets, consumer protection
+- **Key Responsibilities**: Conduct regulation, market integrity, consumer protection
+- **IT Separation Relevance**: Operational resilience framework, outsourcing requirements, technology risk management
+
+##### 1.4.3.2 Prudential Regulation Authority (PRA)
+- **Official Name**: Prudential Regulation Authority (Bank of England)
+- **Website**: https://www.bankofengland.co.uk/prudential-regulation
+- **Regulatory Scope**: Banks, building societies, credit unions, insurers, major investment firms
+- **Key Responsibilities**: Prudential regulation, safety and soundness, financial stability
+- **IT Separation Relevance**: Operational resilience policy (PS6/21), outsourcing and third-party risk management
+
+#### 1.4.4 Germany
+
+##### 1.4.4.1 Federal Financial Supervisory Authority (BaFin)
+- **Official Name**: Bundesanstalt für Finanzdienstleistungsaufsicht (BaFin)
+- **Website**: https://www.bafin.de/
+- **Regulatory Scope**: Banks, insurance companies, securities trading, asset management
+- **Key Responsibilities**: Financial services supervision, consumer protection, market integrity
+- **IT Separation Relevance**: IT governance requirements, outsourcing regulation, operational risk management
+
+#### 1.4.5 European Union
+
+##### 1.4.5.1 European Banking Authority (EBA)
+- **Official Name**: European Banking Authority
+- **Website**: https://www.eba.europa.eu/
+- **Regulatory Scope**: Banking sector regulation, supervisory convergence
+- **Key Responsibilities**: Banking regulation, stress testing, supervisory standards
+- **IT Separation Relevance**: ICT and security risk management guidelines, cloud outsourcing guidelines, operational resilience
+
+##### 1.4.5.2 European Securities and Markets Authority (ESMA)
+- **Official Name**: European Securities and Markets Authority
+- **Website**: https://www.esma.europa.eu/
+- **Regulatory Scope**: Securities markets, investment services, market infrastructure
+- **Key Responsibilities**: Securities regulation, supervisory convergence, investor protection
+- **IT Separation Relevance**: Operational resilience for trading venues, cybersecurity requirements, outsourcing arrangements
+
+##### 1.4.5.3 European Insurance and Occupational Pensions Authority (EIOPA)
+- **Official Name**: European Insurance and Occupational Pensions Authority
+- **Website**: https://www.eiopa.europa.eu/
+- **Regulatory Scope**: Insurance and occupational pensions sectors
+- **Key Responsibilities**: Insurance regulation, supervisory convergence, consumer protection
+- **IT Separation Relevance**: ICT security and governance, outsourcing requirements, operational resilience
+
+##### 1.4.5.4 European Central Bank (ECB)
+- **Official Name**: European Central Bank
+- **Website**: https://www.ecb.europa.eu/
+- **Regulatory Scope**: Eurozone monetary policy, banking supervision (SSM)
+- **Key Responsibilities**: Monetary policy, banking supervision, financial stability
+- **IT Separation Relevance**: Supervisory expectations for IT risk, outsourcing arrangements, operational resilience
+
+#### 1.4.6 India
+
+##### 1.4.6.1 Reserve Bank of India (RBI)
+- **Official Name**: Reserve Bank of India
+- **Website**: https://www.rbi.org.in/
+- **Regulatory Scope**: Banking, payment systems, monetary policy, foreign exchange
+- **Key Responsibilities**: Central banking, banking supervision, payment system oversight
+- **IT Separation Relevance**: IT governance guidelines, outsourcing guidelines, cybersecurity framework
+
+##### 1.4.6.2 Securities and Exchange Board of India (SEBI)
+- **Official Name**: Securities and Exchange Board of India
+- **Website**: https://www.sebi.gov.in/
+- **Regulatory Scope**: Securities markets, mutual funds, investment advisers
+- **Key Responsibilities**: Securities regulation, market development, investor protection
+- **IT Separation Relevance**: Cybersecurity and cyber resilience framework, system audit requirements, business continuity planning
+
+#### 1.4.7 Singapore
+
+##### 1.4.7.1 Monetary Authority of Singapore (MAS)
+- **Official Name**: Monetary Authority of Singapore
+- **Website**: https://www.mas.gov.sg/
+- **Regulatory Scope**: Banking, insurance, securities, payment services, monetary policy
+- **Key Responsibilities**: Financial services regulation, monetary policy, financial stability
+- **IT Separation Relevance**: Technology risk management guidelines, outsourcing requirements, operational resilience
+
 ## 2. Standardized Analysis Methodology
 
 ### 2.1 Analysis Phase Structure
@@ -621,7 +756,8 @@ Based on DORA analysis findings, establish consistent categories across all regu
 
 ---
 
-*Framework Version: v1.0*
+*Framework Version: v1.1*
 *Created: June 15, 2025*
+*Updated: June 15, 2025 - Added comprehensive regulatory authority listings for 7 jurisdictions*
 *Next Review: September 15, 2025*
 *Owner: Milo Task Driver Plugin Development Team*
