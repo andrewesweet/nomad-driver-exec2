@@ -262,18 +262,18 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 ### 2.1 Analysis Phase Structure
 
 #### 2.1.1 Phase 1: Legal Foundation Analysis
-**Objective**: Identify core separation requirements in primary regulation text
+**Objective**: Identify core separation requirements and threat actor specifications in primary regulation text
 **Scope**: Main regulation, directive, or law
 **Deliverable**: `{regulation-code}-foundation-analysis.md`
 
 **Sub-phases**:
 - 1.1: Document acquisition and conversion
-- 1.2: Keyword-based requirement extraction
+- 1.2: Keyword-based requirement extraction (separation and threat actor terms)
 - 1.3: Legal citation and source attribution
-- 1.4: Initial categorization of separation types
+- 1.4: Initial categorization of separation types and threat actor requirements
 
 #### 2.1.2 Phase 2: Technical Standards Analysis
-**Objective**: Analyze detailed technical implementation requirements
+**Objective**: Analyze detailed technical implementation requirements and threat actor specifications
 **Scope**: Regulatory Technical Standards (RTS), Implementing Technical Standards (ITS)
 **Deliverable**: `{regulation-code}-technical-standards-analysis.md`
 
@@ -281,7 +281,7 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 - 2.1: Primary technical standards (RTS)
 - 2.2: Secondary technical standards (ITS)
 - 2.3: Implementation guidelines and guidance
-- 2.4: Technical specification consolidation
+- 2.4: Technical specification consolidation including threat actor controls
 
 #### 2.1.3 Phase 3: Specialized Areas Analysis
 **Objective**: Examine sector-specific or function-specific requirements
@@ -330,11 +330,22 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 **Location**: [Precise location identifier]
 **Context**: [Relevant surrounding text]
 
+## Threat Actor Requirements Identified
+### 1. [Category 1 - e.g., Nation-State Actors]
+#### 1.1 [Specific Threat Actor Requirement]
+**Requirement**: [Clear statement of threat actor consideration requirement]
+**Source**: [Document title, Article/Section reference]
+**Location**: [Precise location identifier]
+**Context**: [Relevant surrounding text]
+
 ## Summary of Key Separation Requirements
 [Categorized summary]
 
+## Summary of Key Threat Actor Requirements
+[Categorized summary of specific threat actors that must be considered]
+
 ## Implementation Guidance for Milo Task Driver Plugin
-[Specific technical guidance]
+[Specific technical guidance including threat actor considerations]
 
 ---
 *Analysis completed: [Date]*
@@ -349,6 +360,15 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 - Applications: "application", "workload", "service", "function"
 - Environment: "environment", "production", "testing", "development"
 - Infrastructure: "infrastructure", "computing", "resource", "system"
+
+**Threat Actor Keywords** (apply to all regulations):
+- Threat actors: "threat actor", "threat actors", "adversary", "adversaries", "attacker", "attackers"
+- Nation-state: "nation state", "nation-state", "state-sponsored", "foreign intelligence", "espionage"
+- Advanced threats: "advanced persistent threat", "APT", "sophisticated attack"
+- Criminal actors: "cybercriminal", "cyber criminal", "organized crime", "criminal organization"
+- Insider threats: "insider threat", "malicious insider", "insider attack", "rogue employee"
+- Other actors: "hacktivist", "hacktivism", "terrorist", "terrorism", "extremist"
+- Risk analysis: "threat model", "threat modeling", "risk assessment", "threat landscape"
 
 **Regulation-Specific Keywords** (customize per regulation):
 - DORA: "subcontract", "outsourc", "third-party"
@@ -541,6 +561,13 @@ Based on DORA analysis findings, establish consistent categories across all regu
 - Jurisdictional compliance boundaries
 - Regional regulatory variations
 
+**7. Threat Actor and Risk Management Requirements**
+- Specific threat actors that must be considered in risk assessments
+- Nation-state and advanced persistent threat (APT) requirements
+- Insider threat and malicious actor considerations
+- Threat modeling and risk analysis mandates
+- Controls required for specific threat actor categories
+
 #### 4.1.2 Cross-Regulation Mapping Matrix
 **Structure**: Map each regulation's requirements to unified categories
 **Format**: Spreadsheet/table with regulations as columns, categories as rows
@@ -550,7 +577,10 @@ Based on DORA analysis findings, establish consistent categories across all regu
 |----------|---------|---------|-------------|-------|-------------|---------|
 | Environment Separation | Art. 25(1,3) | Art. 25 | Art. 16(2) | PS6/21 Ch.3 | Section 3.2 | Req. 6.4 |
 | Access Control Separation | Art. 8(2)(a) | Art. 32(1)(b) | Art. 16(3) | PS6/21 Ch.4 | Section 4.1 | Req. 7.1 |
+| Threat Actor Requirements | TBD* | Art. 32(1) | TBD | TBD | TBD | TBD |
 | ... | ... | ... | ... | ... | ... | ... |
+
+*Note: DORA analysis may require re-analysis to identify specific threat actor requirements
 
 #### 4.1.3 Requirement Hierarchy and Prioritization
 **Priority Levels**:
@@ -626,11 +656,19 @@ Based on DORA analysis findings, establish consistent categories across all regu
 **Technical Complexity**: High
 **Implementation Guidance**: [Specific technical guidance]
 
+### 2.2 Threat Actor Requirements
+#### 2.2.1 Nation-State Actor Considerations
+**Unified Requirement**: [Consolidated threat actor requirement statement]
+**Regulatory Sources**: [List of regulations requiring nation-state threat consideration]
+**Implementation Priority**: MUST / Critical
+**Technical Complexity**: High
+**Implementation Guidance**: [Specific threat modeling and control guidance]
+
 ## 3. Implementation Matrix
 [Cross-reference of requirements to implementation approaches]
 
 ## 4. Compliance Verification Framework
-[Testing and validation approaches for each requirement]
+[Testing and validation approaches for each requirement including threat actor assessments]
 ```
 
 ### 4.3 Continuous Consolidation Process
@@ -679,13 +717,15 @@ Based on DORA analysis findings, establish consistent categories across all regu
 **Objectives**: Establish framework and begin high-priority regulation analysis
 **Deliverables**:
 - Complete meta-framework documentation (this document)
+- **Re-analyze EU DORA for threat actor requirements** (updated analysis)
 - Begin EU GDPR analysis (Tier 2 priority)
 - Begin UK Operational Resilience analysis (Tier 1 priority)
 - Establish repository structure and version control processes
 
 **Success Criteria**:
 - Framework approved by stakeholders
-- First two regulation analyses 50% complete
+- DORA re-analysis complete with threat actor identification
+- First two new regulation analyses 50% complete
 - Documentation standards established and followed
 
 ### 5.2 Phase 2: Core Regulation Analysis (Months 3-6)
@@ -760,11 +800,13 @@ Based on DORA analysis findings, establish consistent categories across all regu
 - Absence of compliance violations
 - Proactive identification of regulatory changes
 - Effective implementation of new requirements
+- Comprehensive threat actor coverage in risk assessments
+- Alignment of controls with regulatory threat actor requirements
 
 ---
 
-*Framework Version: v1.1*
+*Framework Version: v1.3*
 *Created: June 15, 2025*
-*Updated: June 15, 2025 - Added comprehensive regulatory authority listings for 7 jurisdictions*
+*Updated: June 15, 2025 - Added comprehensive regulatory authority listings for 7 jurisdictions, threat actor analysis requirements, and threat actor identification methodology*
 *Next Review: September 15, 2025*
 *Owner: Milo Task Driver Plugin Development Team*
