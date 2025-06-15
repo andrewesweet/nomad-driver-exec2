@@ -592,7 +592,10 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 
 ### 3.1 Repository Structure
 
-#### 3.1.1 Directory Organization
+#### 3.1.1 Hierarchical Directory Organization
+**Structure**: `[jurisdiction]/[authority]/[regulation]/[sub-regulation]`
+**Flexibility**: Variable hierarchy depths (2-4 levels) based on regulatory source complexity
+
 ```
 docs/notes/
 ├── meta-regulatory-analysis-framework.md (this document)
@@ -600,17 +603,93 @@ docs/notes/
 │   ├── unified-separation-requirements.md
 │   ├── implementation-matrix.md
 │   └── compliance-verification-framework.md
-├── {regulation-code}/
-│   ├── v1.0/
-│   │   ├── {regulation-code}-foundation-analysis.md
-│   │   ├── {regulation-code}-technical-standards-analysis.md
-│   │   ├── {regulation-code}-specialized-analysis.md
-│   │   └── {regulation-code}-consolidated-requirements.md
-│   ├── v1.1/
-│   │   └── [updated analysis files]
-│   └── working/
-│       └── [draft and work-in-progress files]
-├── dora/ (existing - completed analysis)
+├── eu/
+│   ├── dora/
+│   │   ├── regulation-2022-2554-analysis.md
+│   │   ├── ict-risk-management-framework-rts/
+│   │   │   └── rts-analysis.md
+│   │   ├── ict-third-party-policy-rts/
+│   │   │   └── rts-analysis.md
+│   │   ├── tlpt-rts/
+│   │   │   └── rts-analysis.md
+│   │   └── subcontracting-rts/
+│   │       └── rts-analysis.md
+│   ├── eba/
+│   │   ├── ict-risk-management-guidelines/
+│   │   │   └── analysis.md
+│   │   └── cloud-outsourcing-guidelines/
+│   │       └── analysis.md
+│   ├── esma/
+│   │   └── operational-resilience-guidelines/
+│   │       └── analysis.md
+│   ├── eiopa/
+│   │   └── ict-security-governance/
+│   │       └── analysis.md
+│   ├── ecb/
+│   │   └── supervisory-expectations-it-risk/
+│   │       └── analysis.md
+│   └── gdpr/
+│       └── regulation-2016-679-analysis.md
+├── us/
+│   ├── federal/
+│   │   ├── ffiec/
+│   │   │   ├── information-security-handbook/
+│   │   │   │   └── analysis.md
+│   │   │   ├── outsourcing-technology-services/
+│   │   │   │   └── analysis.md
+│   │   │   └── business-continuity-planning/
+│   │   │       └── analysis.md
+│   │   ├── occ/
+│   │   │   └── operational-risk-management/
+│   │   │       └── analysis.md
+│   │   ├── fed/
+│   │   │   └── sr-13-19-guidance/
+│   │   │       └── analysis.md
+│   │   ├── fdic/
+│   │   │   └── information-security-program/
+│   │   │       └── analysis.md
+│   │   ├── cftc/
+│   │   │   └── system-safeguards-testing/
+│   │   │       └── analysis.md
+│   │   └── sec/
+│   │       └── cybersecurity-risk-management/
+│   │           └── analysis.md
+│   └── ny-state/
+│       └── nydfs/
+│           └── cybersecurity-regulation/
+│               └── analysis.md
+├── uk/
+│   ├── boe/
+│   │   └── operational-resilience-policy/
+│   │       └── analysis.md
+│   ├── fca/
+│   │   └── operational-resilience-rules/
+│   │       └── analysis.md
+│   └── pra/
+│       └── operational-resilience-ss/
+│           └── analysis.md
+├── de/
+│   └── bafin/
+│       ├── it-governance-requirements/
+│       │   └── analysis.md
+│       └── outsourcing-regulation/
+│           └── analysis.md
+├── in/
+│   ├── rbi/
+│   │   ├── it-governance-guidelines/
+│   │   │   └── analysis.md
+│   │   └── outsourcing-guidelines/
+│   │       └── analysis.md
+│   └── sebi/
+│       └── cybersecurity-framework/
+│           └── analysis.md
+├── sg/
+│   └── mas/
+│       ├── technology-risk-management/
+│       │   └── analysis.md
+│       └── outsourcing-guidelines/
+│           └── analysis.md
+├── dora/ (legacy - existing completed analysis, to be migrated)
 │   ├── regulation-2022-2554-analysis.md
 │   ├── rts-ict-risk-management-analysis.md
 │   ├── rts-ict-third-party-analysis.md
@@ -620,15 +699,43 @@ docs/notes/
     └── [superseded versions and historical analysis]
 ```
 
-#### 3.1.2 Regulation Code Standards
-**Format**: `{jurisdiction}-{regulation-acronym}`
-**Examples**:
-- `eu-dora` (EU Digital Operational Resilience Act)
-- `eu-gdpr` (EU General Data Protection Regulation)
-- `eu-mifid2` (EU Markets in Financial Instruments Directive II)
-- `uk-or` (UK Operational Resilience Framework)
-- `us-sr13-19` (US Federal Reserve SR 13-19)
-- `global-pci-dss` (PCI Data Security Standard)
+**Hierarchy Depth Examples**:
+- **Level 2**: `eu/gdpr/` (regulation directly under jurisdiction)
+- **Level 3**: `us/ffiec/information-security-handbook/` (authority between jurisdiction and regulation)
+- **Level 4**: `eu/dora/ict-risk-management-framework-rts/` (sub-regulation under main regulation)
+
+#### 3.1.2 Directory Path Standards
+**Jurisdiction Codes**:
+- `eu` - European Union
+- `us` - United States
+- `uk` - United Kingdom  
+- `de` - Germany
+- `in` - India
+- `sg` - Singapore
+
+**Authority Codes** (when applicable):
+- `federal` - US Federal level
+- `ny-state` - New York State
+- `dora` - EU DORA regulation (direct under EU)
+- `eba` - European Banking Authority
+- `esma` - European Securities and Markets Authority
+- `eiopa` - European Insurance and Occupational Pensions Authority
+- `ecb` - European Central Bank
+- `ffiec` - US Federal Financial Institutions Examination Council
+- `occ` - US Office of the Comptroller of the Currency
+- `fed` - US Federal Reserve
+- `boe` - Bank of England
+- `fca` - UK Financial Conduct Authority
+- `pra` - UK Prudential Regulation Authority
+- `bafin` - German Federal Financial Supervisory Authority
+- `rbi` - Reserve Bank of India
+- `sebi` - Securities and Exchange Board of India
+- `mas` - Monetary Authority of Singapore
+
+**Regulation Directory Names**: Use descriptive kebab-case names
+- `regulation-2022-2554-analysis.md` - Main regulation files
+- `ict-risk-management-framework-rts/` - Technical standards subdirectories
+- `information-security-handbook/` - Handbook or guidance subdirectories
 
 ### 3.2 Version Control and Change Management
 
@@ -663,9 +770,17 @@ docs/notes/
 4. **Archive Process**: Move superseded versions to `archive/` with clear labeling
 
 **File Naming Conventions**:
-- Working files: `{regulation-code}-{phase}-analysis-draft-{date}.md`
-- Versioned files: `{regulation-code}-{phase}-analysis.md`
-- Archive files: `{regulation-code}-{phase}-analysis-v{version}-archived-{date}.md`
+- **Primary Analysis Files**: `analysis.md` (standard name within regulation directory)
+- **Specific Analysis Files**: `[regulation-name]-analysis.md` (for main regulation documents)
+- **Working Files**: `analysis-working.md` (draft analysis in progress)
+- **Versioned Files**: `analysis-v[version].md` (historical versions)
+- **Archive Files**: `analysis-v[version]-archived-[date].md` (superseded versions)
+
+**Migration Strategy for Existing Files**:
+- **Preserve Legacy Structure**: Keep existing `dora/` directory during transition
+- **Gradual Migration**: Move files to new hierarchy during updates or re-analysis
+- **Cross-Reference Links**: Maintain links between old and new locations
+- **Version Documentation**: Document file location changes in version history
 
 ### 3.3 Preservation of Analysis Stages
 
@@ -981,11 +1096,102 @@ Based on DORA analysis findings, establish consistent categories across all regu
 - Comprehensive threat actor coverage in risk assessments
 - Alignment of controls with regulatory threat actor requirements
 
+## Appendix A: Session Context Summary for Future Analysis
+
+### A.1 Framework Evolution History
+**Framework Development Timeline**:
+- **v1.0** (Initial): Basic regulatory analysis methodology
+- **v1.1** (Enhanced): Added threat actor analysis requirements
+- **v1.2** (Expanded): Included regulatory authority listings across 7 jurisdictions
+- **v1.3** (Systematic): Added comprehensive source tracking methodology
+- **v1.4** (Enhanced Source Tracking): Comprehensive appendix requirements for all inspected sources
+- **v1.5** (Technical Infrastructure Focus): Prioritized technical concerns over process concerns
+- **v1.6** (STRIDE Integration): Expanded separation scope to include STRIDE threat model concepts
+
+### A.2 Completed Analysis Summary
+**DORA Analysis (EU) - Comprehensive Coverage**:
+- **Total Requirements Identified**: 48 specific separation requirements across 4 phases
+- **Phase 1**: Main Regulation (EU) 2022/2554 - 12 requirements across 6 categories
+- **Phase 2**: ICT Risk Management RTS + Third-Party RTS - 15 requirements across 9 categories
+- **Phase 3**: TLPT RTS + Subcontracting RTS - 21 requirements across 11 categories
+- **Threat Actor Requirements**: 4 specific requirements across 3 categories
+- **Source Tracking**: Complete appendices with 3 sources per analysis document
+- **Analysis Completeness**: 85-90% comprehensive coverage
+
+**FFIEC Analysis (US Federal) - Trial Run**:
+- **Framework Version**: v1.4 methodology demonstration
+- **Requirements Identified**: 15 separation requirements + 14 threat actor requirements
+- **Source Tracking**: 11 total sources (5 analyzed, 4 reviewed, 3 not accessed)
+- **Analysis Completeness**: 85% with clear rationale for source inclusion/exclusion
+- **Key Findings**: Segregation of duties, third-party oversight, threat intelligence integration
+
+### A.3 Technical Infrastructure Prioritization Framework
+**7 Priority Categories** (require detailed analysis):
+1. **Physical Infrastructure**: Physical machines, hardware, data centers, geographic separation
+2. **Virtualization Layer**: Virtual machines, hypervisors, virtualization security, resource allocation
+3. **Containerization**: Containers, orchestration platforms, container security, isolation mechanisms
+4. **Process Isolation**: Process separation, memory isolation, CPU isolation, namespace separation
+5. **Network Infrastructure**: Network communication, service meshes, network segmentation, traffic isolation
+6. **Shared Resources**: Shared storage, shared memory, shared computing resources, multi-tenant resource management
+7. **Orchestration Systems**: Container orchestration, workload scheduling, resource management platforms
+
+**Analysis Approach**: Provide detailed technical specifications for infrastructure requirements; note process requirements briefly with focus on supporting technical controls.
+
+### A.4 STRIDE Threat Model Integration
+**Extended Security Separation Concepts**:
+1. **Spoofing/Authenticity**: Identity verification, attestation for physical/virtual resources and logical constructs
+2. **Tampering/Integrity**: Modification prevention, immutability controls for systems and data
+3. **Repudiation/Non-repudiability**: Audit trails, accountability mechanisms across infrastructure layers
+4. **Information Disclosure/Confidentiality**: Encryption, secrets management, data classification boundaries
+5. **Denial of Service/Availability**: Resource protection, failover mechanisms, service isolation
+6. **Elevation of Privilege/Authorization**: Access control, privilege management, capability restrictions
+
+**Keyword Enhancement**: Added STRIDE-specific terms to standard keyword methodology for comprehensive regulatory analysis.
+
+### A.5 Regulatory Authority Coverage
+**18 Regulatory Authorities Identified** across 7 jurisdictions:
+- **United States Federal**: FFIEC, OCC, Federal Reserve, FDIC, NCUA, CFTC, SEC
+- **New York State**: NYDFS
+- **United Kingdom**: Bank of England, FCA, PRA
+- **Germany**: BaFin
+- **European Union**: EBA, ESMA, EIOPA, ECB
+- **India**: RBI, SEBI
+- **Singapore**: MAS
+
+### A.6 Source Tracking Methodology
+**Comprehensive Documentation Requirements**:
+- **Primary Sources**: Fully analyzed regulatory documents with complete analysis
+- **Secondary Sources**: Partially reviewed for context and metadata
+- **Sources Not Accessed**: Identified but not analyzed with clear rationale
+- **Source Metadata**: URI, document type, access date, analysis status, relevance, notes
+- **Analysis Completeness**: Percentage metrics with transparency on coverage limitations
+
+### A.7 Implementation Context for Milo Plugin
+**Multi-Tenant Security Design Requirements**:
+- **Traditional Separation**: Physical/logical boundaries, environment isolation, network segregation
+- **STRIDE-based Security**: Identity verification, integrity controls, audit mechanisms, confidentiality protection, availability assurance, privilege management
+- **Technical Infrastructure Focus**: Detailed architectural guidance for VMs, containers, service meshes, orchestration systems
+- **Regulatory Compliance**: Systematic methodology for analyzing requirements across all target jurisdictions
+
+### A.8 Key Methodological Insights
+**Successful Analysis Patterns**:
+- **Legal-style numbering** (1.2.3 format) essential for regulatory analysis organization
+- **Keyword methodology** must include "tenant", "multi-tenant", "multi-tenancy" alongside traditional separation terms
+- **Source tracking appendices** critical for regulatory compliance verification and audit trails
+- **Technical infrastructure prioritization** over process concerns aligns with plugin development needs
+- **STRIDE threat model integration** provides comprehensive security separation coverage
+
+**Repository Organization**:
+- **Branch Strategy**: Continue work on existing branches rather than creating new PRs
+- **File Structure**: Hierarchical organization by jurisdiction/authority/regulation
+- **Version Control**: Preserve all analysis stages without overwriting initial work
+- **Documentation Standards**: Consistent formatting, precise source attribution, comprehensive appendices
+
 ---
 
 *Framework Version: v1.6*
 *Created: June 15, 2025*
-*Updated: June 15, 2025 - Expanded separation requirements scope to include STRIDE threat model concepts (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) as they apply to physical/virtual IT resources and logical constructs*
+*Updated: June 15, 2025 - Added hierarchical document structure and comprehensive session context summary; Expanded separation requirements scope to include STRIDE threat model concepts*
 *Previous Updates: v1.5 - Added technical infrastructure prioritization framework; v1.4 - Added comprehensive source tracking and appendix requirements; v1.3 - Added regulatory authority listings and threat actor analysis requirements*
 *Next Review: September 15, 2025*
 *Owner: Milo Task Driver Plugin Development Team*
