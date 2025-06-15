@@ -200,6 +200,7 @@ Systematic search for separation, segregation, and isolation requirements using 
 
 ---
 *Analysis completed: June 15, 2025*
-*Framework Version: v1.5 (Technical Infrastructure Prioritization)*
+*Framework Version: v1.6 (Expanded Separation Scope with STRIDE Threat Model)*
 *Total separation requirements identified: 8 specific requirements across 4 categories*
 *Source tracking: Complete appendix with 3 sources documented*
+*Note: Analysis conducted under framework v1.5; future re-analysis recommended under v1.6 to identify STRIDE-based security separation requirements*

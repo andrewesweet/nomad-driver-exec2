@@ -328,6 +328,50 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 - For technical infrastructure requirements: Provide detailed technical specifications, implementation guidance, and architectural considerations
 - For process requirements: Note the requirement but focus on technical controls that support the process
 
+#### 2.1.6 Expanded Separation Requirements Scope
+**Objective**: Comprehensive coverage of security-related separation requirements beyond traditional isolation
+**Scope**: All regulatory analysis phases
+
+**Core Separation Concepts** (traditional scope):
+- **Separation/Segregation/Isolation**: Physical and logical boundaries between systems, data, processes, and tenants
+
+**Extended Security Separation Concepts** (STRIDE-based scope):
+1. **Spoofing/Authenticity**: Requirements for preventing impersonation or misrepresentation of identity
+   - Physical resources: Hardware identity verification, secure boot processes
+   - Virtual resources: VM identity attestation, container image verification
+   - Logical constructs: Authentication boundaries, identity isolation between tenants
+
+2. **Tampering/Integrity**: Requirements for preventing unauthorized modification
+   - Physical resources: Hardware tamper detection, secure storage mechanisms
+   - Virtual resources: VM integrity monitoring, container immutability controls
+   - Logical constructs: Data integrity boundaries, code signing requirements
+
+3. **Repudiation/Non-repudiability**: Requirements for accountability and audit trails
+   - Physical resources: Hardware-based logging, secure audit storage
+   - Virtual resources: VM activity logging, container audit trails
+   - Logical constructs: Transaction logging boundaries, audit data separation
+
+4. **Information Disclosure/Confidentiality**: Requirements for preventing unauthorized access
+   - Physical resources: Hardware encryption, secure memory isolation
+   - Virtual resources: VM memory protection, container secrets management
+   - Logical constructs: Data classification boundaries, encryption key separation
+
+5. **Denial of Service/Availability**: Requirements for resource protection and availability
+   - Physical resources: Hardware resource allocation, failover mechanisms
+   - Virtual resources: VM resource limits, container resource quotas
+   - Logical constructs: Service isolation boundaries, rate limiting controls
+
+6. **Elevation of Privilege/Authorization**: Requirements for access control and privilege management
+   - Physical resources: Hardware privilege levels, secure boot chains
+   - Virtual resources: VM privilege separation, container capability restrictions
+   - Logical constructs: Role-based access boundaries, privilege escalation controls
+
+**Analysis Focus**:
+- Identify regulatory requirements addressing any of these security separation concepts
+- Emphasize technical implementation details for physical and virtual IT resources
+- Document logical construct boundaries and security controls
+- Provide detailed architectural guidance for multi-tenant environments
+
 ### 2.2 Consistent Analysis Framework
 
 #### 2.2.1 Document Structure Template
@@ -346,13 +390,25 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 [Standard keyword list and search approach with technical infrastructure prioritization]
 
 ## Technical Infrastructure Separation Requirements Identified
-### 1. [Category 1 - e.g., Physical Infrastructure Separation]
-#### 1.1 [Specific Technical Requirement]
+
+### 1. Traditional Separation Requirements
+#### 1.1 [Category - e.g., Physical Infrastructure Separation]
+##### 1.1.1 [Specific Technical Requirement]
 **Requirement**: [Clear statement of technical infrastructure requirement]
 **Source**: [Document title, Article/Section reference]
 **Location**: [Precise location identifier]
 **Context**: [Relevant surrounding text]
 **Technical Implementation**: [Detailed technical specifications and architectural considerations]
+
+### 2. Extended Security Separation Requirements (STRIDE-based)
+#### 2.1 [Category - e.g., Spoofing/Authenticity Controls]
+##### 2.1.1 [Specific Security Requirement]
+**Requirement**: [Clear statement of security separation requirement]
+**Source**: [Document title, Article/Section reference]
+**Location**: [Precise location identifier]
+**Context**: [Relevant surrounding text]
+**Security Domain**: [Spoofing/Tampering/Repudiation/Information Disclosure/Denial of Service/Elevation of Privilege]
+**Technical Implementation**: [Detailed technical specifications for physical/virtual resources and logical constructs]
 
 ## Process-Related Separation Requirements (Brief Summary)
 ### 1. [Category 1 - e.g., Organizational Controls]
@@ -372,11 +428,28 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 ## Summary of Key Technical Infrastructure Requirements
 [Categorized summary emphasizing technical implementation details]
 
+### Traditional Separation Requirements Summary
+1. **Physical Infrastructure**: [Physical machines, hardware, data centers]
+2. **Virtualization Layer**: [VMs, hypervisors, resource allocation]
+3. **Containerization**: [Containers, orchestration, isolation]
+4. **Process Isolation**: [Memory, CPU, namespace separation]
+5. **Network Infrastructure**: [Service meshes, segmentation]
+6. **Shared Resources**: [Multi-tenant resource management]
+7. **Orchestration Systems**: [Workload scheduling, clusters]
+
+### Extended Security Separation Requirements Summary (STRIDE-based)
+1. **Spoofing/Authenticity**: [Identity verification, attestation requirements]
+2. **Tampering/Integrity**: [Modification prevention, immutability controls]
+3. **Repudiation/Non-repudiability**: [Audit trails, accountability mechanisms]
+4. **Information Disclosure/Confidentiality**: [Encryption, secrets management]
+5. **Denial of Service/Availability**: [Resource protection, failover]
+6. **Elevation of Privilege/Authorization**: [Access control, privilege management]
+
 ## Summary of Key Threat Actor Requirements
 [Categorized summary of specific threat actors that must be considered]
 
 ## Implementation Guidance for Milo Task Driver Plugin
-[Specific technical guidance including threat actor considerations and detailed infrastructure requirements]
+[Specific technical guidance including threat actor considerations, traditional separation requirements, and STRIDE-based security separation controls for multi-tenant environments]
 ### 1. [Category 1 - e.g., Environment Separation]
 #### 1.1 [Specific Requirement]
 **Requirement**: [Clear statement of requirement]
@@ -457,6 +530,14 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 - Network infrastructure: "network", "service mesh", "microservice", "API gateway", "load balancer"
 - Shared resources: "shared storage", "shared memory", "resource pool", "multi-tenant"
 - Orchestration: "scheduler", "workload management", "resource allocation", "cluster"
+
+**Extended Security Separation Keywords** (STRIDE-based analysis):
+- Spoofing/Authenticity: "authenticity", "identity", "impersonation", "spoofing", "verification", "attestation"
+- Tampering/Integrity: "integrity", "tamper", "modification", "immutable", "signing", "checksum"
+- Repudiation/Non-repudiability: "repudiation", "audit", "logging", "accountability", "traceability", "evidence"
+- Information Disclosure/Confidentiality: "confidentiality", "disclosure", "encryption", "secrets", "privacy", "classification"
+- Denial of Service/Availability: "availability", "denial", "resource exhaustion", "quota", "rate limiting", "failover"
+- Elevation of Privilege/Authorization: "authorization", "privilege", "escalation", "access control", "capability", "permission"
 
 **Threat Actor Keywords** (apply to all regulations):
 - Threat actors: "threat actor", "threat actors", "adversary", "adversaries", "attacker", "attackers"
@@ -902,9 +983,9 @@ Based on DORA analysis findings, establish consistent categories across all regu
 
 ---
 
-*Framework Version: v1.5*
+*Framework Version: v1.6*
 *Created: June 15, 2025*
-*Updated: June 15, 2025 - Added technical infrastructure prioritization framework, enhanced technical keywords, and updated analysis methodology to prioritize technical concerns over process concerns*
-*Previous Updates: v1.4 - Added comprehensive source tracking and appendix requirements; v1.3 - Added regulatory authority listings and threat actor analysis requirements*
+*Updated: June 15, 2025 - Expanded separation requirements scope to include STRIDE threat model concepts (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege) as they apply to physical/virtual IT resources and logical constructs*
+*Previous Updates: v1.5 - Added technical infrastructure prioritization framework; v1.4 - Added comprehensive source tracking and appendix requirements; v1.3 - Added regulatory authority listings and threat actor analysis requirements*
 *Next Review: September 15, 2025*
 *Owner: Milo Task Driver Plugin Development Team*
