@@ -161,6 +161,13 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 - **Key Responsibilities**: Securities industry regulation, market surveillance, professional standards
 - **IT Separation Relevance**: Technology governance, cybersecurity requirements, operational continuity
 
+##### 1.4.1.7 Federal Financial Institutions Examination Council (FFIEC)
+- **Official Name**: Federal Financial Institutions Examination Council
+- **Website**: https://www.ffiec.gov/
+- **Regulatory Scope**: Interagency coordination body for federal banking regulators (Fed, FDIC, NCUA, OCC, CFPB)
+- **Key Responsibilities**: Promoting consistency in examination activities, prescribing uniform principles and standards for federal examination of financial institutions, examiner training
+- **IT Separation Relevance**: Uniform examination standards, supervisory consistency across agencies, technology risk management guidance, operational resilience examination procedures
+
 #### 1.4.2 New York State
 
 ##### 1.4.2.1 New York State Department of Financial Services (NYDFS)
