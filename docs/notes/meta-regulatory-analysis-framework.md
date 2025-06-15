@@ -268,9 +268,10 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 
 **Sub-phases**:
 - 1.1: Document acquisition and conversion
-- 1.2: Keyword-based requirement extraction (separation and threat actor terms)
-- 1.3: Legal citation and source attribution
-- 1.4: Initial categorization of separation types and threat actor requirements
+- 1.2: Source tracking and cataloging (record all sources inspected)
+- 1.3: Keyword-based requirement extraction (separation and threat actor terms)
+- 1.4: Legal citation and source attribution
+- 1.5: Initial categorization of separation types and threat actor requirements
 
 #### 2.1.2 Phase 2: Technical Standards Analysis
 **Objective**: Analyze detailed technical implementation requirements and threat actor specifications
@@ -278,10 +279,11 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 **Deliverable**: `{regulation-code}-technical-standards-analysis.md`
 
 **Sub-phases**:
-- 2.1: Primary technical standards (RTS)
-- 2.2: Secondary technical standards (ITS)
-- 2.3: Implementation guidelines and guidance
-- 2.4: Technical specification consolidation including threat actor controls
+- 2.1: Source identification and tracking for technical standards
+- 2.2: Primary technical standards (RTS) analysis
+- 2.3: Secondary technical standards (ITS) analysis
+- 2.4: Implementation guidelines and guidance review
+- 2.5: Technical specification consolidation including threat actor controls
 
 #### 2.1.3 Phase 3: Specialized Areas Analysis
 **Objective**: Examine sector-specific or function-specific requirements
@@ -346,6 +348,40 @@ This meta-framework establishes a systematic methodology for analyzing multiple 
 
 ## Implementation Guidance for Milo Task Driver Plugin
 [Specific technical guidance including threat actor considerations]
+
+## Appendix: Sources Inspected During Analysis
+### A.1 Primary Sources Analyzed
+**A.1.1 [Source Title]**
+- **URI**: [Full URL]
+- **Document Type**: [Regulation/Guidance/Standard/etc.]
+- **Access Date**: [Date accessed]
+- **Analysis Status**: [Analyzed/Reviewed/Referenced]
+- **Relevance**: [High/Medium/Low/None]
+- **Notes**: [Brief description of content and relevance to analysis]
+
+### A.2 Secondary Sources Reviewed
+**A.2.1 [Source Title]**
+- **URI**: [Full URL]
+- **Document Type**: [Regulation/Guidance/Standard/etc.]
+- **Access Date**: [Date accessed]
+- **Analysis Status**: [Reviewed/Consulted/Not Relevant]
+- **Relevance**: [High/Medium/Low/None]
+- **Notes**: [Brief description and reason for inclusion/exclusion]
+
+### A.3 Sources Identified But Not Accessed
+**A.3.1 [Source Title]**
+- **URI**: [Full URL if available]
+- **Document Type**: [Regulation/Guidance/Standard/etc.]
+- **Reason Not Accessed**: [Technical issues/Out of scope/Time constraints/etc.]
+- **Potential Relevance**: [High/Medium/Low/Unknown]
+- **Notes**: [Brief description and recommendation for future analysis]
+
+### A.4 Source Analysis Summary
+- **Total Sources Identified**: [Number]
+- **Sources Fully Analyzed**: [Number]
+- **Sources Partially Reviewed**: [Number]
+- **Sources Not Accessed**: [Number]
+- **Analysis Completeness**: [Percentage or qualitative assessment]
 
 ---
 *Analysis completed: [Date]*
@@ -805,8 +841,9 @@ Based on DORA analysis findings, establish consistent categories across all regu
 
 ---
 
-*Framework Version: v1.3*
+*Framework Version: v1.4*
 *Created: June 15, 2025*
-*Updated: June 15, 2025 - Added comprehensive regulatory authority listings for 7 jurisdictions, threat actor analysis requirements, and threat actor identification methodology*
+*Updated: June 15, 2025 - Added comprehensive source tracking and appendix requirements for all inspected sources*
+*Previous Updates: v1.3 - Added comprehensive regulatory authority listings for 7 jurisdictions, threat actor analysis requirements, and threat actor identification methodology*
 *Next Review: September 15, 2025*
 *Owner: Milo Task Driver Plugin Development Team*
